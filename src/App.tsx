@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Main from './components/Main';
 import Nav from './components/Nav';
 import { NavContext } from './Context';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
       <NavContext.Provider value={{ themeMode, setThemeMode }}>
         <Nav />
       </NavContext.Provider>
+      <Main />
     </div>
   );
 };
