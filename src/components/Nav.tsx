@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavContext } from '../Context';
-
-var search_terms = [
-  'apple',
-  'apple watch',
-  'apple macbook',
-  'apple macbook pro',
-  'iphone',
-  'iphone 12',
-];
-
-const autocompleteMatch = (e: React.FormEvent<HTMLInputElement>) => {
-  if (e.currentTarget.value === '') {
-    return [];
-  }
-  var reg = new RegExp(e.currentTarget.value);
-  return search_terms.filter((term) => {
-    if (term.match(reg)) {
-      return term;
-    }
-    return false;
-  });
-};
 
 const Nav: React.FC = () => {
   const { themeMode, setThemeMode } = useNavContext();
 
   const [searchFocus, setSearchFocus] = useState(false);
   const [searchResult, setSearchResult] = React.useState<string[]>([]);
+
+  const [data, setData] = useState<any>({});
+
+  useEffect(() => {
+    fetch('https://api.coingecko.com/api/v3/coins/list?include_platform=false')
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
+
+  const autocompleteMatch = (e: React.FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value === '') {
+      return [];
+    }
+    var reg = new RegExp(`^${e.currentTarget.value}`, 'i');
+    return data.filter((term: any) => {
+      if (term.name.match(reg)) {
+        return term;
+      }
+      return false;
+    });
+  };
 
   const showResults = (e: React.FormEvent<HTMLInputElement>) => {
     setSearchResult(autocompleteMatch(e));
@@ -88,13 +89,13 @@ const Nav: React.FC = () => {
             </div>
             {searchResult.length !== 0 && searchFocus && (
               <div className='absolute bg-white mt-0.5 rounded shadow dark:bg-gray-700'>
-                <ul className='py-1 text-sm text-gray-700 dark:text-gray-200'>
-                  {searchResult.map((term) => (
+                <ul className='overflow-y-scroll custom-scroll w-52 h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
+                  {searchResult.map((term: any) => (
                     <li
-                      className='w-52 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
-                      key={term}
+                      className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                      key={term.id}
                     >
-                      {term}
+                      {term.name}
                     </li>
                   ))}
                 </ul>
