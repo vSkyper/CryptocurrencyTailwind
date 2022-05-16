@@ -69,7 +69,7 @@ const Main: React.FC = () => {
 
   if (Object.keys(data).length != 0) {
     return (
-      <main className='mx-4 sm:container sm:mx-auto my-4'>
+      <main className='m-4 sm:container sm:mx-auto'>
         <article className='prose dark:prose-invert md:prose-lg lg:prose-xl max-w-none'>
           <h4>Cryptocurrency Prices by Market Cap</h4>
           <h5>
@@ -90,6 +90,11 @@ const Main: React.FC = () => {
             {marketCapPercentageETH}. CoinGecko API is now tracking{' '}
             {cryptocurrencies} cryptocurrencies.
           </h5>
+          <label className='form-switch'>
+            <input type='checkbox' />
+            <i></i>
+            <h5>Show stats</h5>
+          </label>
         </article>
       </main>
     );
