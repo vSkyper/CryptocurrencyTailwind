@@ -59,7 +59,7 @@ const Nav: React.FC = () => {
             Cryptocurrency
           </span>
         </a>
-        <div className='flex items-center grow sm:grow-0'>
+        <div className='flex items-center grow sm:grow-0 sm:w-80'>
           <div className='grow'>
             <div className='relative'>
               <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
@@ -89,13 +89,13 @@ const Nav: React.FC = () => {
             </div>
             {searchResult.length !== 0 && searchFocus && (
               <div className='absolute bg-white mt-0.5 rounded shadow dark:bg-gray-700'>
-                <ul className='overflow-y-scroll custom-scroll w-52 h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
+                <ul className='overflow-y-scroll custom-scroll w-[17.5rem] h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
                   {searchResult.map((term: any) => (
                     <li
                       className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                       key={term.id}
                     >
-                      {term.name}
+                      {term.name} ({term.symbol.toUpperCase()})
                     </li>
                   ))}
                 </ul>
