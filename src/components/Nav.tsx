@@ -8,7 +8,7 @@ const Nav: React.FC = () => {
   const [searchFocus, setSearchFocus] = useState(false);
 
   const [data, setData] = useState<NavSearch[]>(_navSearch);
-  const [searchResult, setSearchResult] = useState<NavSearch[] | []>([]);
+  const [searchResult, setSearchResult] = useState<NavSearch[]>([]);
 
   useEffect(() => {
     fetch('https://api.coingecko.com/api/v3/coins/list?include_platform=false')
