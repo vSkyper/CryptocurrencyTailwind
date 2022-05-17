@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Footer from './components/Footer';
 import Main from './components/Main/Main';
 import Nav from './components/Nav';
 import { NavContext } from './Context';
@@ -26,10 +27,13 @@ const App: React.FC = () => {
   return (
     <div className={themeMode ? 'dark' : ''}>
       <Router basename={process.env.PUBLIC_URL}>
-      <NavContext.Provider value={{ themeMode, setThemeMode }}>
-        <Nav />
-      </NavContext.Provider>
-      <Main />
+        <NavContext.Provider value={{ themeMode, setThemeMode }}>
+          <Nav />
+        </NavContext.Provider>
+        <Routes>
+          <Route path='/' element={<Main />} />
+        </Routes>
+        <Footer />
       </Router>
     </div>
   );

@@ -46,10 +46,10 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <nav className='bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800'>
+    <nav className='px-2 sm:px-4 py-2.5'>
       <div className='flex flex-nowrap justify-between items-center'>
         <a
-          href='https://flowbite.com'
+          href='/#'
           className='flex items-center mr-4 grow-0'
         >
           <svg
