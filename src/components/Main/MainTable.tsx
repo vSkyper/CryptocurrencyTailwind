@@ -159,7 +159,7 @@ const MainCryptoTable: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         setData([]);
-        data.map((item: any) => (
+        data.map((item: any) =>
           setData((prevData) => [
             ...prevData,
             {
@@ -179,24 +179,20 @@ const MainCryptoTable: React.FC = () => {
               image: item.image,
             },
           ])
-        ));
+        );
       });
   }, []);
 
-  if (Object.keys(data).length !== 0) {
-    return (
-      <div className='ag-theme-alpine-dark mt-5 w-full h-screen'>
-        <AgGridReact
-          rowData={data}
-          columnDefs={columnDefs}
-          animateRows={true}
-          rowSelection='multiple'
-        />
-      </div>
-    );
-  }
-
-  return <div></div>;
+  return (
+    <div className='ag-theme-alpine-dark mt-5 w-full h-screen'>
+      <AgGridReact
+        rowData={data}
+        columnDefs={columnDefs}
+        animateRows={true}
+        rowSelection='multiple'
+      />
+    </div>
+  );
 };
 
 export default MainCryptoTable;

@@ -12,8 +12,26 @@ export const _navSearch: NavSearch[] = [
   },
 ];
 
+export interface MainGlobalInfo {
+  total_market_cap_in_usd: number;
+  market_cap_change_percentage_24h: number;
+  total_volume_in_usd: number;
+  market_cap_percentage_btc: number;
+  market_cap_percentage_eth: number;
+  active_cryptocurrencies: number;
+}
+
+export const _mainGlobalInfo: MainGlobalInfo = {
+  total_market_cap_in_usd: 0,
+  market_cap_change_percentage_24h: 0,
+  total_volume_in_usd: 0,
+  market_cap_percentage_btc: 0,
+  market_cap_percentage_eth: 0,
+  active_cryptocurrencies: 0,
+};
+
 export interface MainTableData {
-  id: string,
+  id: string;
   name: string;
   symbol: string;
   current_price: number;

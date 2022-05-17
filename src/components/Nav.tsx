@@ -15,7 +15,7 @@ const Nav: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         setData([]);
-        data.map((item: any) => (
+        data.map((item: any) =>
           setData((prevData) => [
             ...prevData,
             {
@@ -24,7 +24,7 @@ const Nav: React.FC = () => {
               symbol: item.symbol,
             },
           ])
-        ));
+        );
       });
   }, []);
 
