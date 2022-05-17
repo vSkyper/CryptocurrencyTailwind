@@ -4,7 +4,7 @@ import MainCryptoTable from './MainTable';
 
 const Main: React.FC = () => {
   return (
-    <main className='m-4 sm:mx-24'>
+    <main className='container mx-auto px-4'>
       <MainCryptoInfo />
       <MainCryptoTable />
     </main>
