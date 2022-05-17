@@ -18,7 +18,7 @@ const columnDefs = [
         className='flex items-center gap-2 hover:underline'
         to={`/coins/${params.data.id}`}
       >
-        <img src={params.data.image} className='w-7' alt='logo' />
+        <img src={params.data.image} className='w-5' alt='logo' />
         {params.value}
       </Link>
     ),
