@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Main from './components/Main/Main';
 import Nav from './components/Nav';
-import { NavContext } from './Context';
+import { ThemeContext } from './Context';
 
 const App: React.FC = () => {
   const [themeMode, setThemeMode] = useState<boolean>(
@@ -27,11 +27,18 @@ const App: React.FC = () => {
   return (
     <div className={themeMode ? 'dark' : ''}>
       <Router basename={process.env.PUBLIC_URL}>
-        <NavContext.Provider value={{ themeMode, setThemeMode }}>
+        <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
           <Nav />
-        </NavContext.Provider>
+        </ThemeContext.Provider>
         <Routes>
-          <Route path='/' element={<Main />} />
+          <Route
+            path='/'
+            element={
+              <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
+                <Main />
+              </ThemeContext.Provider>
+            }
+          />
         </Routes>
         <Footer />
       </Router>

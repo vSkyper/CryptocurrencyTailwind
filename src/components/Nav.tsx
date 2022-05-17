@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useNavContext } from '../Context';
+import { useThemeContext } from '../Context';
 import { NavSearch, _navSearch } from '../Interfaces';
 
 const Nav: React.FC = () => {
-  const { themeMode, setThemeMode } = useNavContext();
+  const { themeMode, setThemeMode } = useThemeContext();
 
   const [searchFocus, setSearchFocus] = useState(false);
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AreaChart, ResponsiveContainer, Area, YAxis } from 'recharts';
 import { AgGridReact } from 'ag-grid-react';
 import { Link } from 'react-router-dom';
+import { useThemeContext } from '../../Context';
 import { MainTableData, _mainTableData } from '../../Interfaces';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -150,6 +151,8 @@ const columnDefs = [
 ];
 
 const MainCryptoTable: React.FC = () => {
+  const { themeMode } = useThemeContext();
+
   const [data, setData] = useState<MainTableData[]>(_mainTableData);
 
   useEffect(() => {
@@ -184,7 +187,7 @@ const MainCryptoTable: React.FC = () => {
   }, []);
 
   return (
-    <div className='ag-theme-alpine-dark mt-5 w-full h-screen'>
+    <div className={'mt-5 w-full h-screen ' + (themeMode ? 'ag-theme-alpine-dark' : 'ag-theme-alpine')}>
       <AgGridReact
         rowData={data}
         columnDefs={columnDefs}

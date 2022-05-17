@@ -1,13 +1,13 @@
 import { createContext, useContext } from 'react';
 
-export type NavContent = {
+export type ThemeContent = {
   themeMode: boolean;
   setThemeMode: (themeMode: boolean) => void;
 };
 
-export const NavContext = createContext<NavContent>({
+export const ThemeContext = createContext<ThemeContent>({
   themeMode: true,
   setThemeMode: () => {},
 });
 
-export const useNavContext = () => useContext(NavContext);
+export const useThemeContext = () => useContext(ThemeContext);
