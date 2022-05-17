@@ -159,7 +159,7 @@ const MainCryptoTable: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         setData([]);
-        data.map((item: any) => {
+        data.map((item: any) => (
           setData((prevData) => [
             ...prevData,
             {
@@ -178,8 +178,8 @@ const MainCryptoTable: React.FC = () => {
               chart_in_7d: item.sparkline_in_7d.price,
               image: item.image,
             },
-          ]);
-        });
+          ])
+        ));
       });
   }, []);
 
