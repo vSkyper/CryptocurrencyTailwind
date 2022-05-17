@@ -14,8 +14,8 @@ const Nav: React.FC = () => {
     fetch('https://api.coingecko.com/api/v3/coins/list?include_platform=false')
       .then((response) => response.json())
       .then((data) => {
-        setData([data[0]]);
-        data.slice(1).map((item: any) => {
+        setData([]);
+        data.map((item: any) => {
           setData((prevData) => [
             ...prevData,
             {
