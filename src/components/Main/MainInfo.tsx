@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Main: React.FC = () => {
+const MainCryptoInfo: React.FC = () => {
   const [data, setData] = useState<any>({});
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const Main: React.FC = () => {
 
   if (Object.keys(data).length !== 0) {
     return (
-      <main className='m-4 sm:container sm:mx-auto'>
+      <div>
         <p className='mb-2 text-xl sm:text-2xl font-semibold tracking-tight leading-loose dark:text-white'>
           Cryptocurrency Prices by Market Cap
         </p>
@@ -125,11 +125,11 @@ const Main: React.FC = () => {
             </p>
           </div>
         </div>
-      </main>
+      </div>
     );
   }
 
   return <div></div>;
 };
 
-export default Main;
+export default MainCryptoInfo;
