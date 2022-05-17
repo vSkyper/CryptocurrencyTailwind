@@ -195,7 +195,7 @@ const MainCryptoTable: React.FC = () => {
     return (
       <div className='mt-5 flex'>
         <div className='grow'>
-          <DataGrid autoHeight rows={data} columns={columns} pageSize={50} />
+          <DataGrid className='shadow-sm' autoHeight rows={data} columns={columns} pageSize={50} />
         </div>
       </div>
     );
