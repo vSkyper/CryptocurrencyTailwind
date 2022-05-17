@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useNavContext } from '../Context';
+import { NavSearch, _navSearch } from '../Interfaces';
 
 const Nav: React.FC = () => {
   const { themeMode, setThemeMode } = useNavContext();
 
   const [searchFocus, setSearchFocus] = useState(false);
-  const [searchResult, setSearchResult] = React.useState<string[]>([]);
 
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState<NavSearch[]>(_navSearch);
+  const [searchResult, setSearchResult] = useState<NavSearch[] | []>([]);
 
   useEffect(() => {
     fetch('https://api.coingecko.com/api/v3/coins/list?include_platform=false')
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData([data[0]]);
+        data.slice(1).map((item: any) => {
+          setData((prevData) => [
+            ...prevData,
+            {
+              id: item.id,
+              name: item.name,
+              symbol: item.symbol,
+            },
+          ]);
+        });
       });
   }, []);
 
@@ -22,7 +33,7 @@ const Nav: React.FC = () => {
       return [];
     }
     var reg = new RegExp(`^${e.currentTarget.value}`, 'i');
-    return data.filter((term: any) => {
+    return data.filter((term: NavSearch) => {
       if (term.name.match(reg)) {
         return term;
       }
@@ -87,8 +98,8 @@ const Nav: React.FC = () => {
             />
             {searchResult.length !== 0 && searchFocus && (
               <div className='absolute inset-x-0 bg-white mt-1 rounded shadow dark:bg-gray-700'>
-                <ul className='overflow-y-scroll overflow-x-hidden custom-scroll h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
-                  {searchResult.map((term: any) => (
+                <ul className='overflow-y-scroll overflow-x-hidden custom-scroll max-h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
+                  {searchResult.map((term: NavSearch) => (
                     <li
                       className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
                       key={term.id}
