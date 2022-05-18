@@ -12,3 +12,18 @@
   border-radius: 5px;
   @apply bg-slate-200 dark:bg-slate-900;
 }
+
+.ag-root-wrapper  {
+    @apply rounded-lg shadow-sm bg-white;
+    --ag-header-background-color: null;
+    --ag-background-color: null;
+    --ag-odd-row-background-color: null;
+}
+
+.ag-row-hover {
+  @apply bg-blue-500/[.15] !important;
+}
+
+.ag-row-selected {
+  @apply bg-blue-500/[.15] !important;
+}

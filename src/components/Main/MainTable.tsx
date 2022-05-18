@@ -145,6 +145,7 @@ const columnDefs = [
 
 const defaultColDef = {
   sortable: true,
+  resizable: true,
 };
 
 const MainCryptoTable: React.FC = () => {
@@ -198,6 +199,7 @@ const MainCryptoTable: React.FC = () => {
         animateRows={true}
         pagination={true}
         paginationPageSize={50}
+        colResizeDefault={'shift'}
         rowSelection='multiple'
       />
     </div>
