@@ -14,7 +14,7 @@
 }
 
 .ag-root-wrapper {
-  @apply rounded-lg shadow-sm bg-white border-gray-200;
+  @apply rounded-lg shadow-sm bg-white border-gray-200 !important;
   --ag-header-background-color: null;
   --ag-background-color: null;
   --ag-odd-row-background-color: null;
