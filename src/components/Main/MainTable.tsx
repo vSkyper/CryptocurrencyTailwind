@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { AreaChart, ResponsiveContainer, Area, YAxis } from 'recharts';
 import { AgGridReact } from 'ag-grid-react';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,13 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 
 const columnDefs = [
   {
+    headerName: '#',
+    width: 65,
+    valueGetter: (params: any) => Number(params.node.id),
+  },
+  {
     field: 'name',
+    width: 170,
     cellRenderer: (params: any) => (
       <Link
         className='flex items-center gap-2 hover:underline'
@@ -24,11 +30,13 @@ const columnDefs = [
   },
   {
     field: 'symbol',
+    width: 115,
     valueFormatter: (params: any) => params.value.toUpperCase(),
   },
   {
     field: 'current_price',
     headerName: 'Current price',
+    width: 150,
     valueFormatter: (params: any) =>
       Number(params.value).toLocaleString('en-US', {
         minimumFractionDigits: 0,
@@ -40,6 +48,7 @@ const columnDefs = [
   {
     field: 'price_change_percentage_1h',
     headerName: '1h',
+    width: 120,
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
@@ -57,6 +66,7 @@ const columnDefs = [
   {
     field: 'price_change_percentage_24h',
     headerName: '24h',
+    width: 120,
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
@@ -74,6 +84,7 @@ const columnDefs = [
   {
     field: 'price_change_percentage_7d',
     headerName: '7d',
+    width: 120,
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
@@ -91,6 +102,7 @@ const columnDefs = [
   {
     field: 'total_volume',
     headerName: '24h volume',
+    width: 175,
     valueFormatter: (params: any) =>
       Number(params.value).toLocaleString('en-US', {
         maximumFractionDigits: 0,
@@ -101,6 +113,7 @@ const columnDefs = [
   {
     field: 'market_cap',
     headerName: 'Market cap',
+    width: 175,
     valueFormatter: (params: any) =>
       Number(params.value).toLocaleString('en-US', {
         maximumFractionDigits: 0,
@@ -111,6 +124,7 @@ const columnDefs = [
   {
     field: 'chart_in_7d',
     headerName: 'Last 7 days',
+    width: 175,
     sortable: false,
     cellRenderer: (params: any) => {
       const color =
@@ -120,7 +134,7 @@ const columnDefs = [
           <AreaChart data={params.value}>
             <defs>
               <linearGradient
-                id={`linearColor${params.rowIndex}`}
+                id={`linearColor${params.node.id}`}
                 x1='0'
                 y1='0'
                 x2='0'
@@ -133,7 +147,7 @@ const columnDefs = [
             <Area
               dataKey={(value) => value}
               stroke={color}
-              fill={`url(#linearColor${params.rowIndex})`}
+              fill={`url(#linearColor${params.node.id})`}
             />
             <YAxis dataKey={(value) => value} domain={['auto', 'auto']} hide />
           </AreaChart>
@@ -154,7 +168,7 @@ const MainCryptoTable: React.FC = () => {
 
   const [data, setData] = useState<MainTableData[]>(_mainTableData);
 
-  useEffect(() => {
+  const onGridReady = useCallback(() => {
     fetch(
       'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d'
     )
@@ -194,13 +208,13 @@ const MainCryptoTable: React.FC = () => {
     >
       <AgGridReact
         rowData={data}
+        onGridReady={onGridReady}
         columnDefs={columnDefs}
         defaultColDef={defaultColDef}
         domLayout={'autoHeight'}
         animateRows={true}
         pagination={true}
         paginationPageSize={50}
-        colResizeDefault={'shift'}
         rowSelection='multiple'
       />
     </div>

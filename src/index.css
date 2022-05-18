@@ -20,8 +20,12 @@
   --ag-odd-row-background-color: null;
 }
 
-.ag-row {
+.ag-header {
   @apply border-gray-200 dark:border-gray-700 !important;
+}
+
+.ag-row {
+  @apply border-gray-200 dark:border-gray-700  !important;
 }
 
 .ag-row-hover {
