@@ -146,6 +146,7 @@ const columnDefs = [
 const defaultColDef = {
   sortable: true,
   resizable: true,
+  suppressMovable: true,
 };
 
 const MainCryptoTable: React.FC = () => {
