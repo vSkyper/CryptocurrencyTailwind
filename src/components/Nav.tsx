@@ -88,7 +88,7 @@ const Nav: React.FC = () => {
             </div>
             <input
               type='text'
-              className='focus:outline-none p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg ring sm:text-sm focus:ring-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white'
+              className='focus:outline-none p-1 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg ring sm:text-sm focus:ring-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white'
               placeholder='Search...'
               onFocus={() => setSearchFocus(true)}
               onBlur={() => setSearchFocus(false)}
