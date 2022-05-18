@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useThemeContext } from '../Context';
 import { NavSearch, _navSearch } from '../Interfaces';
 
@@ -48,10 +49,7 @@ const Nav: React.FC = () => {
   return (
     <nav className='px-2 sm:px-4 py-2.5'>
       <div className='flex flex-nowrap justify-between items-center'>
-        <a
-          href='/#'
-          className='flex items-center mr-4 grow-0'
-        >
+        <Link className='flex items-center mr-4 grow-0' to='/'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-8 w-8 mr-3 dark:text-white'
@@ -69,7 +67,7 @@ const Nav: React.FC = () => {
           <span className='hidden text-xl font-semibold sm:block dark:text-white'>
             Cryptocurrency
           </span>
-        </a>
+        </Link>
         <div className='flex items-center grow sm:grow-0 sm:w-80'>
           <div className='w-full relative'>
             <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
@@ -100,12 +98,15 @@ const Nav: React.FC = () => {
               <div className='absolute inset-x-0 bg-white mt-1 rounded shadow dark:bg-gray-700'>
                 <ul className='overflow-y-scroll overflow-x-hidden custom-scroll max-h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
                   {searchResult.map((term: NavSearch) => (
-                    <li
-                      className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'
+                    <Link
                       key={term.id}
+                      to={`/coins/${term.id}`}
+                      onMouseDown={(e) => e.preventDefault()}
                     >
-                      {term.name} ({term.symbol.toUpperCase()})
-                    </li>
+                      <li className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
+                        {term.name} ({term.symbol.toUpperCase()})
+                      </li>
+                    </Link>
                   ))}
                 </ul>
               </div>

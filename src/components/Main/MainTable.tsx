@@ -12,7 +12,6 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 const columnDefs = [
   {
     field: 'name',
-    sortable: true,
     cellRenderer: (params: any) => (
       <Link
         className='flex items-center gap-2 hover:underline'
@@ -25,13 +24,11 @@ const columnDefs = [
   },
   {
     field: 'symbol',
-    sortable: true,
     valueFormatter: (params: any) => params.value.toUpperCase(),
   },
   {
     field: 'current_price',
     headerName: 'Current price',
-    sortable: true,
     valueFormatter: (params: any) =>
       Number(params.value).toLocaleString('en-US', {
         minimumFractionDigits: 0,
@@ -43,7 +40,6 @@ const columnDefs = [
   {
     field: 'price_change_percentage_1h',
     headerName: '1h',
-    sortable: true,
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
@@ -61,7 +57,6 @@ const columnDefs = [
   {
     field: 'price_change_percentage_24h',
     headerName: '24h',
-    sortable: true,
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
@@ -79,7 +74,6 @@ const columnDefs = [
   {
     field: 'price_change_percentage_7d',
     headerName: '7d',
-    sortable: true,
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
@@ -97,7 +91,6 @@ const columnDefs = [
   {
     field: 'total_volume',
     headerName: '24h volume',
-    sortable: true,
     valueFormatter: (params: any) =>
       Number(params.value).toLocaleString('en-US', {
         maximumFractionDigits: 0,
@@ -108,7 +101,6 @@ const columnDefs = [
   {
     field: 'market_cap',
     headerName: 'Market cap',
-    sortable: true,
     valueFormatter: (params: any) =>
       Number(params.value).toLocaleString('en-US', {
         maximumFractionDigits: 0,
@@ -119,6 +111,7 @@ const columnDefs = [
   {
     field: 'chart_in_7d',
     headerName: 'Last 7 days',
+    sortable: false,
     cellRenderer: (params: any) => {
       const color =
         params.data.price_change_percentage_7d < 0 ? '#EF4444' : '#22C55E';
@@ -149,6 +142,10 @@ const columnDefs = [
     },
   },
 ];
+
+const defaultColDef = {
+  sortable: true,
+};
 
 const MainCryptoTable: React.FC = () => {
   const { themeMode } = useThemeContext();
@@ -187,11 +184,20 @@ const MainCryptoTable: React.FC = () => {
   }, []);
 
   return (
-    <div className={'mt-5 w-full h-screen ' + (themeMode ? 'ag-theme-alpine-dark' : 'ag-theme-alpine')}>
+    <div
+      className={
+        'mt-5 w-full h-full ' +
+        (themeMode ? 'ag-theme-alpine-dark' : 'ag-theme-alpine')
+      }
+    >
       <AgGridReact
         rowData={data}
         columnDefs={columnDefs}
+        defaultColDef={defaultColDef}
+        domLayout={'autoHeight'}
         animateRows={true}
+        pagination={true}
+        paginationPageSize={50}
         rowSelection='multiple'
       />
     </div>
