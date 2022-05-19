@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Main from './components/Main/Main';
+import Coin from './components/Coin/Coin';
 import Nav from './components/Nav';
 import { ThemeContext } from './Context';
 
@@ -39,6 +40,7 @@ const App: React.FC = () => {
               </ThemeContext.Provider>
             }
           />
+          <Route path='/coins/:id' element={<Coin />} />
         </Routes>
         <Footer />
       </Router>
