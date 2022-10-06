@@ -59,3 +59,13 @@ export const _mainTableData: MainTableData[] = [
     image: '',
   },
 ];
+
+export interface Coin {
+  name: string;
+  image: string;
+}
+
+export const _coin: Coin = {
+  name: '',
+  image: '',
+};

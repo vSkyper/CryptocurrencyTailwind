@@ -52,9 +52,8 @@ const columnDefs = [
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
-      } else {
-        return 'text-green-500';
       }
+      return 'text-green-500';
     },
     valueFormatter: (params: any) =>
       Number(params.value / 100).toLocaleString('en-US', {
@@ -70,9 +69,8 @@ const columnDefs = [
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
-      } else {
-        return 'text-green-500';
       }
+      return 'text-green-500';
     },
     valueFormatter: (params: any) =>
       Number(params.value / 100).toLocaleString('en-US', {
@@ -88,9 +86,8 @@ const columnDefs = [
     cellClass: (params: any) => {
       if (params.value < 0) {
         return 'text-red-500';
-      } else {
-        return 'text-green-500';
       }
+      return 'text-green-500';
     },
     valueFormatter: (params: any) =>
       Number(params.value / 100).toLocaleString('en-US', {

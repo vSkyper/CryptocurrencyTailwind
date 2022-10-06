@@ -18,10 +18,13 @@ const App: React.FC = () => {
   }, [themeMode]);
 
   useEffect(() => {
-    if (themeMode) {
-      document.body.setAttribute('class', 'bg-gray-800');
-    } else {
-      document.body.setAttribute('class', 'bg-white');
+    switch (themeMode) {
+      case true:
+        document.body.setAttribute('class', 'bg-gray-800');
+        break;
+      case false:
+        document.body.setAttribute('class', 'bg-white');
+        break;
     }
   }, [themeMode]);
 

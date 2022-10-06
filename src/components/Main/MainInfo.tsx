@@ -27,7 +27,7 @@ const MainCryptoInfo: React.FC = () => {
   });
 
   let marketCapText = Number(
-    data.total_market_cap_in_usd / 1000000000000
+    data.total_market_cap_in_usd / 10**12
   ).toLocaleString('en-US', {
     maximumFractionDigits: 2,
     style: 'currency',
@@ -49,7 +49,7 @@ const MainCryptoInfo: React.FC = () => {
   });
 
   let totalVolumeText = Number(
-    data.total_volume_in_usd / 1000000000
+    data.total_volume_in_usd / 10**9
   ).toLocaleString('en-US', {
     maximumFractionDigits: 0,
     style: 'currency',
