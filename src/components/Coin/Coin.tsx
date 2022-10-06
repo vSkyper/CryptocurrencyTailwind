@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Coin, _coin } from '../../Interfaces';
+import CoinRechart from './CoinRechart';
 
 const Main: React.FC = () => {
   let { id } = useParams();
@@ -26,6 +27,9 @@ const Main: React.FC = () => {
         <img src={coin.image} className='w-7' alt='logo' />
         {coin.name}
       </p>
+      <div className='mt-7'>
+        <CoinRechart id={id!} />
+      </div>
     </main>
   );
 };
