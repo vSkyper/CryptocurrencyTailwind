@@ -80,13 +80,13 @@ const CoinRechart: React.FC<Props> = ({ id }) => {
           1Y
         </button>
         <button
-          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === 'max' ? 'text-blue-500' : 'dark:text-white')}
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 rounded-r ' + (days === 'max' ? 'text-blue-500' : 'dark:text-white')}
           onClick={() => setDays('max')}
         >
           MAX
         </button>
       </div>
-      <div className='w-full h-96 mt-5'>
+      <div className='w-11/12 h-96 mt-5'>
         <ResponsiveContainer width='100%' height='100%'>
           <AreaChart data={rechart}>
             <defs>
