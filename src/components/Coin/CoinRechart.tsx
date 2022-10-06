@@ -41,43 +41,89 @@ const CoinRechart: React.FC<Props> = ({ id }) => {
   console.log(rechart);
 
   return (
-    <div className='w-full h-96'>
-      <ResponsiveContainer width='100%' height='100%'>
-        <AreaChart data={rechart}>
-          <defs>
-            <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
-              <stop offset='5%' stopColor='#648dae' stopOpacity={0.4} />
-              <stop offset='75%' stopColor='#648dae' stopOpacity={0.05} />
-            </linearGradient>
-          </defs>
-          <Area dataKey='value' stroke='#648dae' fill='url(#color)' />
-          <XAxis
-            dataKey='date'
-            axisLine={false}
-            tickLine={false}
-            tickFormatter={(value) => {
-              switch (days) {
-                case '1':
-                  return format(new Date(value), '| hh:mm a |');
-                case 'max':
-                  return format(new Date(value), '| y MMM |');
-                default:
-                  return format(new Date(value), '| MMM, d |');
-              }
-            }}
-          />
-          <YAxis
-            dataKey='value'
-            domain={['auto', 'auto']}
-            axisLine={false}
-            tickLine={false}
-            tickCount={8}
-            tickFormatter={(value) => `$${value}`}
-          />
-          <Tooltip />
-          <CartesianGrid opacity={0.05} vertical={false} />
-        </AreaChart>
-      </ResponsiveContainer>
+    <div>
+      <div className='inline-flex'>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 rounded-l ' + (days === '1' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('1')}
+        >
+          1D
+        </button>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === '7' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('7')}
+        >
+          1W
+        </button>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === '30' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('30')}
+        >
+          1M
+        </button>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === '90' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('90')}
+        >
+          3M
+        </button>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === '180' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('180')}
+        >
+          6M
+        </button>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === '365' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('365')}
+        >
+          1Y
+        </button>
+        <button
+          className={'hover:bg-gray-300 dark:hover:bg-gray-700 font-bold py-2 px-4 ' + (days === 'max' ? 'text-blue-500' : 'dark:text-white')}
+          onClick={() => setDays('max')}
+        >
+          MAX
+        </button>
+      </div>
+      <div className='w-full h-96 mt-5'>
+        <ResponsiveContainer width='100%' height='100%'>
+          <AreaChart data={rechart}>
+            <defs>
+              <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
+                <stop offset='5%' stopColor='#648dae' stopOpacity={0.4} />
+                <stop offset='75%' stopColor='#648dae' stopOpacity={0.05} />
+              </linearGradient>
+            </defs>
+            <Area dataKey='value' stroke='#648dae' fill='url(#color)' />
+            <XAxis
+              dataKey='date'
+              axisLine={false}
+              tickLine={false}
+              tickFormatter={(value) => {
+                switch (days) {
+                  case '1':
+                    return format(new Date(value), '| hh:mm a |');
+                  case 'max':
+                    return format(new Date(value), '| y MMM |');
+                  default:
+                    return format(new Date(value), '| MMM, d |');
+                }
+              }}
+            />
+            <YAxis
+              dataKey='value'
+              domain={['auto', 'auto']}
+              axisLine={false}
+              tickLine={false}
+              tickCount={8}
+              tickFormatter={(value) => `$${value}`}
+            />
+            <Tooltip />
+            <CartesianGrid opacity={0.05} vertical={false} />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

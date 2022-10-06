@@ -23,8 +23,8 @@ const Main: React.FC = () => {
 
   return (
     <main className='container mx-auto w-11/12 my-4 sm:px-4'>
-      <p className='flex items-center gap-2 mb-2 text-lg sm:text-xl font-semibold tracking-tight leading-loose dark:text-white'>
-        <img src={coin.image} className='w-7' alt='logo' />
+      <p className='flex items-center gap-2 mb-2 text-xl sm:text-2xl font-semibold tracking-tight leading-loose dark:text-white'>
+        <img src={coin.image} className='w-8' alt='logo' />
         {coin.name}
       </p>
       <div className='mt-7'>
