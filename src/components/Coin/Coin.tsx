@@ -18,7 +18,7 @@ const Main: React.FC = () => {
           image: data.image.large,
         });
       });
-  }, []);
+  }, [id]);
 
   return (
     <main className='container mx-auto w-11/12 my-4 sm:px-4'>
