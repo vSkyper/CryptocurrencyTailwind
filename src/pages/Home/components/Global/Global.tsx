@@ -1,78 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import { MainGlobalInfo, _mainGlobalInfo } from '../../Interfaces';
+import { IGlobalData } from '../../../../interfaces';
 
-const MainCryptoInfo: React.FC = () => {
-  const [data, setData] = useState<MainGlobalInfo>(_mainGlobalInfo);
+interface Props {
+  globalData: IGlobalData;
+};
 
-  useEffect(() => {
-    fetch('https://api.coingecko.com/api/v3/global')
-      .then((response) => response.json())
-      .then((data) => {
-        setData({
-          total_market_cap_in_usd: data.data.total_market_cap.usd,
-          market_cap_change_percentage_24h:
-            data.data.market_cap_change_percentage_24h_usd,
-          total_volume_in_usd: data.data.total_volume.usd,
-          market_cap_percentage_btc: data.data.market_cap_percentage.btc,
-          market_cap_percentage_eth: data.data.market_cap_percentage.eth,
-          active_cryptocurrencies: data.data.active_cryptocurrencies,
-        });
-      });
-  }, []);
-
-  let marketCap = Number(data.total_market_cap_in_usd).toLocaleString('en-US', {
+export default function Global({ globalData }: Props) {
+  const marketCap = Number(globalData.data.total_market_cap.usd).toLocaleString('en-US', {
     maximumFractionDigits: 0,
     style: 'currency',
     currency: 'USD',
   });
 
-  let marketCapText = Number(
-    data.total_market_cap_in_usd / 10**12
+  const marketCapText = Number(
+    globalData.data.total_market_cap.usd / Math.pow(10, 12)
   ).toLocaleString('en-US', {
     maximumFractionDigits: 2,
     style: 'currency',
     currency: 'USD',
   });
 
-  let marketCapPercentage = Number(
-    data.market_cap_change_percentage_24h / 100
+  const marketCapPercentage = Number(
+    globalData.data.market_cap_change_percentage_24h_usd / 100
   ).toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
     style: 'percent',
   });
 
-  let totalVolume = Number(data.total_volume_in_usd).toLocaleString('en-US', {
+  const totalVolume = Number(globalData.data.total_volume.usd).toLocaleString('en-US', {
     maximumFractionDigits: 0,
     style: 'currency',
     currency: 'USD',
   });
 
-  let totalVolumeText = Number(
-    data.total_volume_in_usd / 10**9
+  const totalVolumeText = Number(
+    globalData.data.total_volume.usd / Math.pow(10, 9)
   ).toLocaleString('en-US', {
     maximumFractionDigits: 0,
     style: 'currency',
     currency: 'USD',
   });
 
-  let marketCapPercentageBTC = Number(
-    data.market_cap_percentage_btc / 100
+  const marketCapPercentageBTC = Number(
+    globalData.data.market_cap_percentage.btc / 100
   ).toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
     style: 'percent',
   });
 
-  let marketCapPercentageETH = Number(
-    data.market_cap_percentage_eth / 100
+  const marketCapPercentageETH = Number(
+    globalData.data.market_cap_percentage.eth / 100
   ).toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
     style: 'percent',
   });
 
-  let cryptocurrencies = Number(data.active_cryptocurrencies).toLocaleString(
+  const cryptocurrencies = Number(globalData.data.active_cryptocurrencies).toLocaleString(
     'en-US'
   );
 
@@ -86,7 +71,7 @@ const MainCryptoInfo: React.FC = () => {
         a{' '}
         <span
           className={
-            data.market_cap_change_percentage_24h < 0
+            globalData.data.market_cap_change_percentage_24h_usd < 0
               ? 'text-red-500'
               : 'text-green-500'
           }
@@ -136,5 +121,3 @@ const MainCryptoInfo: React.FC = () => {
     </div>
   );
 };
-
-export default MainCryptoInfo;

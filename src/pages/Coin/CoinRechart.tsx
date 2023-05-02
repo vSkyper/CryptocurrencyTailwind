@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { CoinRechartInterface, _coinRechart } from '../../Interfaces';
 import { format } from 'date-fns';
 import {
   Area,
@@ -10,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { CoinRechartInterface, _coinRechart } from '../../temp_interfaces';
 
 type Props = {
   id: string;

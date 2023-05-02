@@ -2,12 +2,10 @@ import React, { useState, useCallback } from 'react';
 import { AreaChart, ResponsiveContainer, Area, YAxis } from 'recharts';
 import { AgGridReact } from 'ag-grid-react';
 import { Link } from 'react-router-dom';
-import { useThemeContext } from '../../Context';
-import { MainTableData, _mainTableData } from '../../Interfaces';
-
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { useThemeContext } from '../../store';
+import { MainTableData, _mainTableData } from '../../temp_interfaces';
 
 const columnDefs = [
   {
@@ -161,7 +159,7 @@ const defaultColDef = {
 };
 
 const MainCryptoTable: React.FC = () => {
-  const { themeMode } = useThemeContext();
+  const { darkMode } = useThemeContext();
 
   const [data, setData] = useState<MainTableData[]>(_mainTableData);
 
@@ -200,7 +198,7 @@ const MainCryptoTable: React.FC = () => {
     <div
       className={
         'mt-5 w-full h-full ' +
-        (themeMode ? 'ag-theme-alpine-dark' : 'ag-theme-alpine')
+        (darkMode ? 'ag-theme-alpine-dark' : 'ag-theme-alpine')
       }
     >
       <AgGridReact

@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer';
-import Main from './components/Main/Main';
-import Coin from './components/Coin/Coin';
-import Nav from './components/Nav';
-import { ThemeContext } from './Context';
+import Coin from './pages/Coin/Coin';
+import { ThemeContext } from './store';
+import { Footer, Navbar } from './components';
+import { Home } from './pages';
 
-const App: React.FC = () => {
-  const [themeMode, setThemeMode] = useState<boolean>(
+export default function App() {
+  const [darkMode, setDarkMode] = useState<boolean>(
     localStorage.getItem('localTheme')
       ? JSON.parse(localStorage.getItem('localTheme') || '{}')
       : true
   );
 
   useEffect(() => {
-    localStorage.setItem('localTheme', JSON.stringify(themeMode));
-  }, [themeMode]);
+    localStorage.setItem('localTheme', JSON.stringify(darkMode));
+  }, [darkMode]);
 
   useEffect(() => {
-    switch (themeMode) {
+    switch (darkMode) {
       case true:
         document.body.setAttribute('class', 'bg-gray-800');
         break;
@@ -26,20 +25,20 @@ const App: React.FC = () => {
         document.body.setAttribute('class', 'bg-white');
         break;
     }
-  }, [themeMode]);
+  }, [darkMode]);
 
   return (
-    <div className={themeMode ? 'dark' : ''}>
+    <div className={darkMode ? 'dark' : ''}>
       <Router basename={process.env.PUBLIC_URL}>
-        <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
-          <Nav />
+        <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+          <Navbar />
         </ThemeContext.Provider>
         <Routes>
           <Route
             path='/'
             element={
-              <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
-                <Main />
+              <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+                <Home />
               </ThemeContext.Provider>
             }
           />
@@ -50,5 +49,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-export default App;

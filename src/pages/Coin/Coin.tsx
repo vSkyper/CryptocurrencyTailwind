@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Coin, _coin } from '../../Interfaces';
 import CoinRechart from './CoinRechart';
+import { Coin, _coin } from '../../temp_interfaces';
 
 const Main: React.FC = () => {
   let { id } = useParams();
