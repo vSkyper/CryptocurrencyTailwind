@@ -38,8 +38,6 @@ const CoinRechart: React.FC<Props> = ({ id }) => {
       });
   }, [id, days]);
 
-  console.log(rechart);
-
   return (
     <div>
       <div className='inline-flex'>

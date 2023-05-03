@@ -1,7 +1,6 @@
 import { ICoins, IGlobalData } from '../../interfaces';
 import useFetch from '../../hooks/useFetch';
-import MainTable from './MainTable';
-import { Global } from './components';
+import { Global, Table } from './components';
 import { ErrorModal, LoadingModal } from '../../components';
 
 export default function Home() {
@@ -19,7 +18,7 @@ export default function Home() {
   return (
     <main className='container mx-auto w-11/12 my-4 sm:px-4'>
       <Global globalData={globalData} />
-      <MainTable />
+      <Table coins={coins} />
     </main>
   );
 };
