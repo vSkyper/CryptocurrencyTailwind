@@ -41,10 +41,17 @@ export default function App() {
               </ThemeContext.Provider>
             }
           />
-          <Route path='/coins/:id' element={<Coin />} />
+          <Route
+            path='/coins/:id'
+            element={
+              <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+                <Coin />
+              </ThemeContext.Provider>
+            }
+          />
         </Routes>
         <Footer />
       </Router>
-    </div>
+    </div >
   );
 };

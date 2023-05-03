@@ -11,6 +11,8 @@ import {
   YAxis,
 } from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
+import colors from 'tailwindcss/colors';
+import { useThemeContext } from '../../../../../../store';
 
 interface Props {
   sparkline: {
@@ -21,6 +23,8 @@ interface Props {
 }
 
 export default function Chart({ sparkline, days }: Props) {
+  const { darkMode } = useThemeContext();
+
   const CustomTooltip = useCallback(({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
     if (!active || !payload || !payload.length) return null;
     return (
@@ -46,13 +50,14 @@ export default function Chart({ sparkline, days }: Props) {
       <AreaChart data={sparkline}>
         <defs>
           <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor='#648dae' stopOpacity={0.4} />
-            <stop offset='75%' stopColor='#648dae' stopOpacity={0.05} />
+            <stop offset='5%' stopColor={colors.blue['500']} stopOpacity={0.4} />
+            <stop offset='75%' stopColor={colors.blue['500']} stopOpacity={0.05} />
           </linearGradient>
         </defs>
-        <Area dataKey='value' stroke='#648dae' fill='url(#color)' />
+        <Area dataKey='value' stroke={colors.blue['500']} fill='url(#color)' />
         <XAxis
           dataKey='date'
+          stroke={darkMode ? 'white' : 'black'}
           axisLine={false}
           tickLine={false}
           tickFormatter={(value) => {
@@ -68,6 +73,7 @@ export default function Chart({ sparkline, days }: Props) {
         />
         <YAxis
           dataKey='value'
+          stroke={darkMode ? 'white' : 'black'}
           domain={['auto', 'auto']}
           axisLine={false}
           tickLine={false}
