@@ -28,12 +28,12 @@ export default function Sparkline({ id }: Props) {
 
   return (
     <div>
-      <div className='inline-flex'>
+      <div className='flex flex-wrap'>
         {buttons.map((button) => (
           <Button key={button.days} {...button} setDays={setDays} actualDays={days} />
         ))}
       </div>
-      <div className='w-11/12 h-96 mt-5'>
+      <div className='h-52 sm:h-96 mt-5'>
         <Chart sparkline={sparkline} days={days} />
       </div>
     </div>

@@ -21,9 +21,9 @@ export default function Coin() {
         <img src={data.image.large} className='w-8' alt='logo' />
         {data.name}
       </p>
-      <div className='mt-7'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-7'>
         <Sparkline id={id} />
       </div>
-    </main>
+    </main >
   );
 };
