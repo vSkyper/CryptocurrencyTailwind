@@ -1,4 +1,4 @@
-import { IGlobalData } from "../../../../../../interfaces";
+import { IGlobalData } from '../../../../../../ interfaces';
 
 interface Props {
   globalData: IGlobalData;

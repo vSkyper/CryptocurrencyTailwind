@@ -1,13 +1,16 @@
 import { format } from 'date-fns';
+import { useCallback } from 'react';
 import {
   Area,
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts';
+import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
 interface Props {
   sparkline: {
@@ -18,6 +21,26 @@ interface Props {
 }
 
 export default function Chart({ sparkline, days }: Props) {
+  const CustomTooltip = useCallback(({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
+    if (!active || !payload || !payload.length) return null;
+    return (
+      <div
+        className='bg-white dark:bg-gray-800 opacity-75 p-3 rounded-lg flex flex-col items-center'
+      >
+        <div className='dark:text-white'>{format(new Date(label), 'eeee, d MMM, yyyy')}</div>
+        <div className='dark:text-white'>
+          {Number(payload[0].value).toLocaleString('en-US', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 8,
+            style: 'currency',
+            currency: 'USD',
+          })}
+        </div>
+      </div>
+    );
+
+  }, []);
+
   return (
     <ResponsiveContainer width='100%' height='100%'>
       <AreaChart data={sparkline}>
@@ -51,7 +74,7 @@ export default function Chart({ sparkline, days }: Props) {
           tickCount={8}
           tickFormatter={(value) => `$${value}`}
         />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
         <CartesianGrid opacity={0.05} vertical={false} />
       </AreaChart>
     </ResponsiveContainer>
