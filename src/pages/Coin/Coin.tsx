@@ -1,37 +1,29 @@
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CoinRechart from './CoinRechart';
-import { Coin, _coin } from '../../temp_interfaces';
+import { ICoin } from '../../interfaces';
+import useFetch from '../../hooks/useFetch';
+import { ErrorModal, LoadingModal } from '../../components';
+import { Sparkline } from './components';
 
-const Main: React.FC = () => {
+export default function Coin() {
   let { id } = useParams();
 
-  const [coin, setCoin] = useState<Coin>(_coin);
+  const { data, error } = useFetch<ICoin>(
+    `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
+  );
 
-  useEffect(() => {
-    fetch(
-      `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setCoin({
-          name: data.name,
-          image: data.image.large,
-        });
-      });
-  }, [id]);
+  if (!id || error) return <ErrorModal />
+
+  if (!data) return <LoadingModal />
 
   return (
     <main className='container mx-auto w-11/12 my-4 sm:px-4'>
       <p className='flex items-center gap-2 mb-2 text-xl sm:text-2xl font-semibold tracking-tight leading-loose dark:text-white'>
-        <img src={coin.image} className='w-8' alt='logo' />
-        {coin.name}
+        <img src={data.image.large} className='w-8' alt='logo' />
+        {data.name}
       </p>
       <div className='mt-7'>
-        <CoinRechart id={id!} />
+        <Sparkline id={id} />
       </div>
     </main>
   );
 };
-
-export default Main;

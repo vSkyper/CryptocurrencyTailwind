@@ -1,3 +1,4 @@
 import { columns, defaultColDef } from './dataTable';
+import { buttons } from './coin';
 
-export { columns, defaultColDef };
+export { columns, defaultColDef, buttons };

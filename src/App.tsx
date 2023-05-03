@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Coin from './pages/Coin/Coin';
 import { ThemeContext } from './store';
 import { Footer, Navbar } from './components';
-import { Home } from './pages';
+import { Coin, Home } from './pages';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(

@@ -8,23 +8,23 @@ export default function SearchBar() {
 
   const [searchResult, setSearchResult] = useState<ICoinsList[]>([]);
 
-  const { data: coinsList, error } = useFetch<ICoinsList[]>(
+  const { data, error } = useFetch<ICoinsList[]>(
     'https://api.coingecko.com/api/v3/coins/list?include_platform=false'
   );
 
   const autocompleteMatch = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-    if (!e.currentTarget.value || error || !coinsList) {
+    if (!e.currentTarget.value || error || !data) {
       return [];
     }
 
     const reg: RegExp = new RegExp(`^${e.currentTarget.value}`, 'i');
-    return coinsList.filter((term: ICoinsList) => {
+    return data.filter((term: ICoinsList) => {
       if (term.name.match(reg)) {
         return term;
       }
       return false;
     });
-  }, [error, coinsList]);
+  }, [error, data]);
 
   const showResults = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     setSearchResult(autocompleteMatch(e));
