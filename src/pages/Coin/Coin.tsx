@@ -15,6 +15,8 @@ export default function Coin() {
 
   if (!data) return <LoadingModal />
 
+  console.log(data.market_data.current_price)
+
   return (
     <main className='container mx-auto w-11/12 my-4 sm:px-4'>
       <div className='flex items-center gap-2 mb-3.5 text-xl sm:text-2xl font-semibold tracking-tight dark:text-white'>
@@ -23,7 +25,7 @@ export default function Coin() {
       </div>
       <div className='flex gap-3 text-2xl sm:text-3xl font-bold dark:text-white'>
         <div>
-          {data.market_data.current_price.usd.toLocaleString(
+          {Number(data.market_data.current_price.usd).toLocaleString(
             'en-US',
             {
               minimumFractionDigits: 0,
