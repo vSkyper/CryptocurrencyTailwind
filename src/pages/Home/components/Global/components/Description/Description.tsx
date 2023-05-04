@@ -52,10 +52,10 @@ export default function Description({ globalData }: Props) {
 
   return (
     <>
-      <p className='mb-2 text-lg sm:text-xl font-semibold tracking-tight leading-loose dark:text-white'>
+      <div className='mb-2 text-lg sm:text-xl font-semibold tracking-tight leading-loose dark:text-white'>
         Cryptocurrency Prices by Market Cap
-      </p>
-      <p className='text-base sm:text-lg font-normal tracking-tight dark:text-white'>
+      </div>
+      <div className='text-base sm:text-lg font-normal tracking-tight dark:text-white'>
         The global cryptocurrency market cap today is {marketCapText} Trillion,
         a{' '}
         <span
@@ -72,7 +72,7 @@ export default function Description({ globalData }: Props) {
         {marketCapPercentageBTC} and Ethereum dominance is at{' '}
         {marketCapPercentageETH}. CoinGecko API is now tracking{' '}
         {cryptocurrencies} cryptocurrencies.
-      </p>
+      </div>
     </>
   )
 }
