@@ -15,17 +15,15 @@ export default function Coin() {
 
   if (!data) return <LoadingModal />
 
-  console.log(data.market_data.current_price)
-
   return (
     <main className='container mx-auto w-11/12 my-4 sm:px-4'>
       <div className='flex items-center gap-2 mb-3.5 text-xl sm:text-2xl font-semibold tracking-tight dark:text-white'>
-        <img src={data.image.large} className='w-8' alt='logo' />
+        <img src={data.image?.large} className='w-8' alt='logo' />
         <div>{data.name} <span className="text-base sm:text-lg text-gray-500 dark:text-gray-400">{data.symbol.toUpperCase()}</span></div>
       </div>
       <div className='flex gap-3 text-2xl sm:text-3xl font-bold dark:text-white'>
         <div>
-          {Number(data.market_data.current_price.usd).toLocaleString(
+          {(data.market_data.current_price?.usd || 0).toLocaleString(
             'en-US',
             {
               minimumFractionDigits: 0,
@@ -36,7 +34,7 @@ export default function Coin() {
           )}
         </div>
         <div>
-          {(data.market_data.price_change_percentage_24h / 100
+          {((data.market_data.price_change_percentage_24h || 0) / 100
           ).toLocaleString('en-US', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
