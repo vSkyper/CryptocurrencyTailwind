@@ -1,4 +1,4 @@
-import { IGlobalData } from '../../../../interfaces';
+import { IGlobalData } from 'interfaces';
 import { Cards, Description } from './components';
 
 interface Props {

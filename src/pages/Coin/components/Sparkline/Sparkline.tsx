@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import useFetch from '../../../../hooks/useFetch';
-import { ISparkline } from '../../../../interfaces';
-import { ErrorModal, LoadingModal } from '../../../../components';
 import { format } from 'date-fns';
-import { buttons } from '../../../../constants';
 import { Button, Chart } from './components';
+import { ISparkline } from 'interfaces';
+import useFetch from 'hooks/useFetch';
+import { ErrorModal, LoadingModal } from 'components';
+import { buttons } from 'constants/coin';
 
 interface Props {
   id: string;

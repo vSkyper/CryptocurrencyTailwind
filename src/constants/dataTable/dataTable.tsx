@@ -1,8 +1,8 @@
 import { AreaChart, ResponsiveContainer, Area, YAxis } from 'recharts';
 import { Link } from 'react-router-dom';
 import { CellClassParams, ColDef, ValueFormatterParams, ValueGetterParams } from 'ag-grid-community';
-import { ICoins } from '../../interfaces';
 import colors from 'tailwindcss/colors';
+import { ICoins } from 'interfaces';
 
 export const defaultColDef: ColDef<ICoins> = {
   sortable: true,

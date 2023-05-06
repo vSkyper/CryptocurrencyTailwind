@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { ICoin } from '../../interfaces';
-import useFetch from '../../hooks/useFetch';
-import { ErrorModal, LoadingModal } from '../../components';
-import { Sparkline } from './components';
+import { Price, Sparkline } from './components';
+import useFetch from 'hooks/useFetch';
+import { ICoin } from 'interfaces';
+import { ErrorModal, LoadingModal } from 'components';
 
 export default function Coin() {
   let { id } = useParams();
@@ -21,27 +21,7 @@ export default function Coin() {
         <img src={data.image?.large} className='w-8' alt='logo' />
         <div>{data.name} <span className="text-base sm:text-lg text-gray-500 dark:text-gray-400">{data.symbol.toUpperCase()}</span></div>
       </div>
-      <div className='flex gap-3 text-2xl sm:text-3xl font-bold dark:text-white'>
-        <div>
-          {(data.market_data.current_price?.usd || 0).toLocaleString(
-            'en-US',
-            {
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 8,
-              style: 'currency',
-              currency: 'USD',
-            }
-          )}
-        </div>
-        <div>
-          {((data.market_data.price_change_percentage_24h || 0) / 100
-          ).toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-            style: 'percent',
-          })}
-        </div>
-      </div>
+      <Price marketData={data.market_data} />
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-7'>
         <Sparkline id={id} />
       </div>

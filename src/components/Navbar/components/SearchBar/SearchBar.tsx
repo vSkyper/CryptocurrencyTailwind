@@ -1,7 +1,7 @@
+import useFetch from 'hooks/useFetch';
+import { ICoinsList } from 'interfaces';
 import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useFetch from '../../../../hooks/useFetch';
-import { ICoinsList } from '../../../../interfaces';
 
 export default function SearchBar() {
   const [searchFocus, setSearchFocus] = useState(false);

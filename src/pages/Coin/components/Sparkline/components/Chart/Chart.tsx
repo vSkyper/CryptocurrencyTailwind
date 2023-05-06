@@ -11,8 +11,8 @@ import {
   YAxis,
 } from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
+import { useThemeContext } from 'store';
 import colors from 'tailwindcss/colors';
-import { useThemeContext } from '../../../../../../store';
 
 interface Props {
   sparkline: {

@@ -1,9 +1,9 @@
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { useThemeContext } from '../../../../store';
-import { ICoins } from '../../../../interfaces';
-import { columns, defaultColDef } from '../../../../constants';
+import { useThemeContext } from 'store';
+import { ICoins } from 'interfaces';
+import { columns, defaultColDef } from 'constants/dataTable';
 
 interface Props {
   coins: ICoins[]

@@ -1,3 +1,4 @@
 import Sparkline from './Sparkline';
+import Price from './Price';
 
-export { Sparkline };
+export { Sparkline, Price };
