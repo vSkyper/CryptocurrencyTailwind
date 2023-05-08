@@ -10,6 +10,7 @@ module.exports = {
         primaryDark: colors.gray['800'],
         secondary: colors.gray['200'],
         secondaryDark: colors.gray['700'],
+        tertiary: colors.blue['500'],
         error: colors.red['500'],
         success: colors.green['500'],
       },

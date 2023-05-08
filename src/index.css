@@ -3,35 +3,35 @@
 @tailwind utilities;
 
 .custom-scroll::-webkit-scrollbar-track {
-  @apply bg-white dark:bg-gray-700;
+  @apply bg-primary dark:bg-primaryDark;
 }
 .custom-scroll::-webkit-scrollbar {
   width: 6px;
 }
 .custom-scroll::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  @apply bg-slate-200 dark:bg-slate-900;
+  @apply bg-secondary dark:bg-secondaryDark;
 }
 
 .ag-root-wrapper {
-  @apply rounded-lg shadow-sm border-gray-200 dark:border-gray-700 !important;
+  @apply rounded-lg shadow-sm border-secondary dark:border-secondaryDark !important;
   --ag-header-background-color: null;
   --ag-background-color: null;
   --ag-odd-row-background-color: null;
 }
 
 .ag-header {
-  @apply border-gray-200 dark:border-gray-700 !important;
+  @apply border-secondary dark:border-secondaryDark !important;
 }
 
 .ag-row {
-  @apply border-gray-200 dark:border-gray-700 !important;
+  @apply border-secondary dark:border-secondaryDark !important;
 }
 
 .ag-row-hover {
-  @apply dark:bg-gray-800 !important;
+  @apply dark:bg-secondaryDark !important;
 }
 
 .ag-row-selected {
-  @apply dark:bg-gray-900 !important;
+  @apply dark:bg-primaryDark !important;
 }
