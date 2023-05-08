@@ -52,9 +52,9 @@ export const columns: ColDef<ICoins>[] = [
     width: 120,
     cellClass: (params: CellClassParams<ICoins, number | null>) => {
       if (params.value && params.value < 0) {
-        return 'text-red-500';
+        return 'text-error';
       }
-      return 'text-green-500';
+      return 'text-success';
     },
     valueFormatter: (params: ValueFormatterParams<ICoins, number | null>) => {
       if (!params.value) return 'N/A';
@@ -72,9 +72,9 @@ export const columns: ColDef<ICoins>[] = [
     width: 120,
     cellClass: (params: CellClassParams<ICoins, number | null>) => {
       if (params.value && params.value < 0) {
-        return 'text-red-500';
+        return 'text-error';
       }
-      return 'text-green-500';
+      return 'text-success';
     },
     valueFormatter: (params: ValueFormatterParams<ICoins, number | null>) => {
       if (!params.value) return 'N/A';
@@ -92,9 +92,9 @@ export const columns: ColDef<ICoins>[] = [
     width: 120,
     cellClass: (params: CellClassParams<ICoins, number | null>) => {
       if (params.value && params.value < 0) {
-        return 'text-red-500';
+        return 'text-error';
       }
-      return 'text-green-500';
+      return 'text-success';
     },
     valueFormatter: (params: ValueFormatterParams<ICoins, number | null>) => {
       if (!params.value) return 'N/A';

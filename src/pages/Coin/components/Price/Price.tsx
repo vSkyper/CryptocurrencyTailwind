@@ -1,4 +1,4 @@
-import { IMarketData } from "interfaces";
+import { IMarketData } from 'interfaces';
 
 
 interface Props {
@@ -21,8 +21,8 @@ export default function Price({ marketData }: Props) {
       </div>
       <div className={'text-xl sm:text-2xl ' + (
         (marketData.price_change_percentage_24h || 0) < 0
-          ? 'text-red-500'
-          : 'text-green-500')}>
+          ? 'text-error'
+          : 'text-success')}>
         {((marketData.price_change_percentage_24h || 0) / 100
         ).toLocaleString('en-US', {
           minimumFractionDigits: 2,

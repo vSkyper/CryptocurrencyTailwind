@@ -50,15 +50,15 @@ export default function SearchBar() {
       </div>
       <input
         type='text'
-        className='focus:outline-none p-1.5 pl-10 pr-3.5 w-full text-gray-900 bg-gray-50 rounded-lg ring sm:text-sm focus:ring-blue-500 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white'
+        className='focus:outline-none p-1.5 pl-10 pr-3.5 w-full text-gray-900 bg-gray-50 rounded-lg ring sm:text-sm focus:ring-blue-500 dark:bg-secondaryDark dark:placeholder-gray-400 dark:text-white'
         placeholder='Search...'
         onFocus={() => setSearchFocus(true)}
         onBlur={() => setSearchFocus(false)}
         onChange={showResults}
       />
       {searchResult.length !== 0 && searchFocus && (
-        <div className='absolute inset-x-0 bg-white mt-1 rounded shadow dark:bg-gray-700'>
-          <ul className='overflow-y-scroll overflow-x-hidden custom-scroll max-h-52 py-1 text-sm text-gray-700 dark:text-gray-200'>
+        <div className='absolute inset-x-0 bg-white mt-1 rounded shadow dark:bg-secondaryDark'>
+          <ul className='overflow-y-scroll overflow-x-hidden custom-scroll max-h-52 py-1 text-sm text-secondaryDark dark:text-secondary'>
             {searchResult.map((term: ICoinsList) => (
               <Link
                 key={term.id}

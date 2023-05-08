@@ -1,4 +1,4 @@
-import { useThemeContext } from "store";
+import { useThemeContext } from 'store';
 
 export default function ThemeIcon() {
   const { darkMode, setDarkMode } = useThemeContext();

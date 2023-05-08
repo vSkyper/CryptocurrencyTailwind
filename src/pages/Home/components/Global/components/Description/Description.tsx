@@ -1,4 +1,4 @@
-import { IGlobalData } from "interfaces";
+import { IGlobalData } from 'interfaces';
 
 interface Props {
   globalData: IGlobalData;
@@ -57,8 +57,8 @@ export default function Description({ globalData }: Props) {
         <span
           className={
             globalData.data.market_cap_change_percentage_24h_usd < 0
-              ? 'text-red-500'
-              : 'text-green-500'
+              ? 'text-error'
+              : 'text-success'
           }
         >
           {marketCapPercentage}

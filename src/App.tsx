@@ -18,10 +18,10 @@ export default function App() {
   useEffect(() => {
     switch (darkMode) {
       case true:
-        document.body.setAttribute('class', 'bg-gray-800');
+        document.body.setAttribute('class', 'bg-primaryDark');
         break;
       case false:
-        document.body.setAttribute('class', 'bg-white');
+        document.body.setAttribute('class', 'bg-primary');
         break;
     }
   }, [darkMode]);

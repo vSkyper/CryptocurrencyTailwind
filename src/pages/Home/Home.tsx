@@ -16,7 +16,7 @@ export default function Home() {
   if (!globalData || !coins) return <LoadingModal />
 
   return (
-    <main className='container mx-auto w-11/12 my-4 sm:px-4'>
+    <main className='container mx-auto w-11/12 my-4'>
       <Global globalData={globalData} />
       <Table coins={coins} />
     </main>

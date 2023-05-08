@@ -29,7 +29,7 @@ export default function Chart({ sparkline, days }: Props) {
     if (!active || !payload || !payload.length) return null;
     return (
       <div
-        className='bg-white dark:bg-gray-800 opacity-75 p-3 rounded-lg flex flex-col items-center'
+        className='bg-primary dark:bg-primaryDark opacity-75 p-3 rounded-lg flex flex-col items-center'
       >
         <div className='dark:text-white'>{format(new Date(label), 'eeee, d MMM, yyyy')}</div>
         <div className='dark:text-white'>
