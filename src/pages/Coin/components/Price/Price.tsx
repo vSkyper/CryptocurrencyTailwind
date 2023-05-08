@@ -7,7 +7,7 @@ interface Props {
 
 export default function Price({ marketData }: Props) {
   return (
-    <div className='flex items-baseline gap-3 font-bold dark:text-white'>
+    <div className='flex items-baseline gap-3 font-bold text-primaryDark dark:text-primary'>
       <div className='text-2xl sm:text-3xl'>
         {(marketData.current_price?.usd || 0).toLocaleString(
           'en-US',

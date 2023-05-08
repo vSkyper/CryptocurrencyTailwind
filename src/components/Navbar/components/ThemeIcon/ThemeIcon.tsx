@@ -4,7 +4,7 @@ export default function ThemeIcon() {
   const { darkMode, setDarkMode } = useThemeContext();
 
   return (
-    <div className='ml-4 dark:text-white cursor-pointer'>
+    <div className='ml-4 text-primaryDark dark:text-primary cursor-pointer'>
       {!darkMode && (
         <svg
           xmlns='http://www.w3.org/2000/svg'

@@ -48,10 +48,10 @@ export default function Description({ globalData }: Props) {
 
   return (
     <>
-      <div className='mb-2 text-lg sm:text-xl font-semibold tracking-tight leading-loose dark:text-white'>
+      <div className='mb-2 text-lg sm:text-xl font-semibold tracking-tight leading-loose text-primaryDark dark:text-primary'>
         Cryptocurrency Prices by Market Cap
       </div>
-      <div className='text-base sm:text-lg font-normal tracking-tight dark:text-white'>
+      <div className='text-base sm:text-lg font-normal tracking-tight text-primaryDark dark:text-primary'>
         The global cryptocurrency market cap today is {marketCapText},
         a{' '}
         <span

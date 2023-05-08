@@ -17,7 +17,7 @@ export default function Coin() {
 
   return (
     <main className='container mx-auto w-11/12 my-4'>
-      <div className='flex items-center gap-2 mb-3.5 text-xl sm:text-2xl font-semibold tracking-tight dark:text-white'>
+      <div className='flex items-center gap-2 mb-3.5 text-xl sm:text-2xl font-semibold tracking-tight text-primaryDark dark:text-primary'>
         <img src={data.image?.large} className='w-8' alt='logo' />
         <div>{data.name} <span className='text-base sm:text-lg text-secondaryDark dark:text-secondary'>{data.symbol.toUpperCase()}</span></div>
       </div>

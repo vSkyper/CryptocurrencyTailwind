@@ -50,7 +50,7 @@ export default function SearchBar() {
       </div>
       <input
         type='text'
-        className='focus:outline-none p-1.5 pl-10 pr-3.5 w-full text-primaryDark dark:text-white bg-primary rounded-lg ring sm:text-sm focus:ring-tertiary dark:bg-primaryDark placeholder-secondaryDark dark:placeholder-secondary'
+        className='focus:outline-none p-1.5 pl-10 pr-3.5 w-full text-primaryDark dark:text-primary bg-primary rounded-lg ring sm:text-sm focus:ring-tertiary dark:bg-primaryDark placeholder-secondaryDark dark:placeholder-secondary'
         placeholder='Search...'
         onFocus={() => setSearchFocus(true)}
         onBlur={() => setSearchFocus(false)}

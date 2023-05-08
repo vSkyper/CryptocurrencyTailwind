@@ -15,7 +15,7 @@ export default function Table({ coins }: Props) {
   return (
     <div
       className={
-        'mt-5 w-full h-full ' +
+        'mt-5 w-full h-full text-white ' +
         (darkMode ? 'ag-theme-alpine-dark' : 'ag-theme-alpine')
       }
     >

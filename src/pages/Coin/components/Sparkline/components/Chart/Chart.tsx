@@ -29,10 +29,10 @@ export default function Chart({ sparkline, days }: Props) {
     if (!active || !payload || !payload.length) return null;
     return (
       <div
-        className='bg-primary dark:bg-primaryDark opacity-75 p-3 rounded-lg flex flex-col items-center'
+        className='bg-primary dark:bg-primaryDark bg-opacity-75 p-3 rounded-lg flex flex-col items-center'
       >
-        <div className='dark:text-white'>{format(new Date(label), 'eeee, d MMM, yyyy')}</div>
-        <div className='dark:text-white'>
+        <div className='text-primaryDark dark:text-primary'>{format(new Date(label), 'eeee, d MMM, yyyy')}</div>
+        <div className='text-primaryDark dark:text-primary'>
           {Number(payload[0].value).toLocaleString('en-US', {
             minimumFractionDigits: 0,
             maximumFractionDigits: 8,
@@ -57,7 +57,7 @@ export default function Chart({ sparkline, days }: Props) {
         <Area dataKey='value' stroke={colors.blue['500']} fill='url(#color)' />
         <XAxis
           dataKey='date'
-          stroke={darkMode ? 'white' : 'black'}
+          stroke={darkMode ? colors.white : colors.gray['800']}
           axisLine={false}
           tickLine={false}
           tickFormatter={(value) => {
@@ -73,7 +73,7 @@ export default function Chart({ sparkline, days }: Props) {
         />
         <YAxis
           dataKey='value'
-          stroke={darkMode ? 'white' : 'black'}
+          stroke={darkMode ? colors.white : colors.gray['800']}
           domain={['auto', 'auto']}
           axisLine={false}
           tickLine={false}

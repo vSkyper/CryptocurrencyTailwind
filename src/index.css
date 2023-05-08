@@ -25,7 +25,7 @@
 }
 
 .ag-row {
-  @apply border-secondary dark:border-secondaryDark !important;
+  @apply text-primaryDark dark:text-primary border-secondary dark:border-secondaryDark !important;
 }
 
 .ag-row-hover {
