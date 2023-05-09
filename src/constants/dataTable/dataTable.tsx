@@ -1,7 +1,7 @@
 import { AreaChart, ResponsiveContainer, Area, YAxis } from 'recharts';
 import { Link } from 'react-router-dom';
 import { CellClassParams, ColDef, ValueFormatterParams, ValueGetterParams } from 'ag-grid-community';
-import colors from 'tailwindcss/colors';
+import tailwindConfig from 'tailwind.config';
 import { ICoins } from 'interfaces';
 
 export const defaultColDef: ColDef<ICoins> = {
@@ -135,7 +135,7 @@ export const columns: ColDef<ICoins>[] = [
     sortable: false,
     cellRenderer: (params: any) => {
       const color =
-        params.data.price_change_percentage_7d_in_currency < 0 ? colors.red['500'] : colors.green['500'];
+        params.data.price_change_percentage_7d_in_currency < 0 ? tailwindConfig.theme.extend.colors.error : tailwindConfig.theme.extend.colors.success;
       return (
         <ResponsiveContainer>
           <AreaChart data={params.value}>

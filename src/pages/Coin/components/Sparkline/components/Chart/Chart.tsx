@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 import { useThemeContext } from 'store';
-import colors from 'tailwindcss/colors';
+import tailwindConfig from 'tailwind.config';
 
 interface Props {
   sparkline: {
@@ -50,14 +50,14 @@ export default function Chart({ sparkline, days }: Props) {
       <AreaChart data={sparkline}>
         <defs>
           <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor={colors.blue['500']} stopOpacity={0.4} />
-            <stop offset='75%' stopColor={colors.blue['500']} stopOpacity={0.05} />
+            <stop offset='5%' stopColor={tailwindConfig.theme.extend.colors.tertiary} stopOpacity={0.4} />
+            <stop offset='75%' stopColor={tailwindConfig.theme.extend.colors.tertiary} stopOpacity={0.05} />
           </linearGradient>
         </defs>
-        <Area dataKey='value' stroke={colors.blue['500']} fill='url(#color)' />
+        <Area dataKey='value' stroke={tailwindConfig.theme.extend.colors.tertiary} fill='url(#color)' />
         <XAxis
           dataKey='date'
-          stroke={darkMode ? colors.white : colors.gray['800']}
+          stroke={darkMode ? tailwindConfig.theme.extend.colors.primary : tailwindConfig.theme.extend.colors.primaryDark}
           axisLine={false}
           tickLine={false}
           tickFormatter={(value) => {
@@ -73,7 +73,7 @@ export default function Chart({ sparkline, days }: Props) {
         />
         <YAxis
           dataKey='value'
-          stroke={darkMode ? colors.white : colors.gray['800']}
+          stroke={darkMode ? tailwindConfig.theme.extend.colors.primary : tailwindConfig.theme.extend.colors.primaryDark}
           domain={['auto', 'auto']}
           axisLine={false}
           tickLine={false}
