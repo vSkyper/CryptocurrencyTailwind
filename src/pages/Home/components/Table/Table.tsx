@@ -6,8 +6,8 @@ import { ICoins } from 'interfaces';
 import { columns, defaultColDef } from 'constants/dataTable';
 
 interface Props {
-  coins: ICoins[]
-};
+  coins: ICoins[];
+}
 
 export default function Table({ coins }: Props) {
   const { darkMode } = useThemeContext();
@@ -31,4 +31,4 @@ export default function Table({ coins }: Props) {
       />
     </div>
   );
-};
+}

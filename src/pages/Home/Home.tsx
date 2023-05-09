@@ -11,9 +11,9 @@ export default function Home() {
     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d'
   );
 
-  if (globalDataError || coinsError) return <ErrorModal />
+  if (globalDataError || coinsError) return <ErrorModal />;
 
-  if (!globalData || !coins) return <LoadingModal />
+  if (!globalData || !coins) return <LoadingModal />;
 
   return (
     <main className='container mx-auto w-11/12 my-4'>
@@ -21,4 +21,4 @@ export default function Home() {
       <Table coins={coins} />
     </main>
   );
-};
+}

@@ -17,9 +17,9 @@ export default function Sparkline({ id }: Props) {
     `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`
   );
 
-  if (error) return <ErrorModal />
+  if (error) return <ErrorModal />;
 
-  if (!data) return <LoadingModal />
+  if (!data) return <LoadingModal />;
 
   const sparkline = data?.prices.map((data) => ({
     date: format(new Date(data[0]), 'MMM d y, hh:mm:ss a'),
@@ -30,7 +30,12 @@ export default function Sparkline({ id }: Props) {
     <div>
       <div className='flex flex-wrap'>
         {buttons.map((button) => (
-          <Button key={button.days} {...button} setDays={setDays} actualDays={days} />
+          <Button
+            key={button.days}
+            {...button}
+            setDays={setDays}
+            actualDays={days}
+          />
         ))}
       </div>
       <div className='h-52 sm:h-96 mt-5'>

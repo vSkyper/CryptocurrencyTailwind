@@ -1,6 +1,11 @@
 import { AreaChart, ResponsiveContainer, Area, YAxis } from 'recharts';
 import { Link } from 'react-router-dom';
-import { CellClassParams, ColDef, ValueFormatterParams, ValueGetterParams } from 'ag-grid-community';
+import {
+  CellClassParams,
+  ColDef,
+  ValueFormatterParams,
+  ValueGetterParams,
+} from 'ag-grid-community';
 import tailwindConfig from 'tailwind.config';
 import { ICoins } from 'interfaces';
 
@@ -14,7 +19,8 @@ export const columns: ColDef<ICoins>[] = [
   {
     headerName: '#',
     width: 65,
-    valueGetter: (params: ValueGetterParams<ICoins>) => params.node && params.node.id,
+    valueGetter: (params: ValueGetterParams<ICoins>) =>
+      params.node && params.node.id,
   },
   {
     field: 'name',
@@ -32,7 +38,8 @@ export const columns: ColDef<ICoins>[] = [
   {
     field: 'symbol',
     width: 115,
-    valueFormatter: (params: ValueFormatterParams<ICoins, string>) => params.value.toUpperCase(),
+    valueFormatter: (params: ValueFormatterParams<ICoins, string>) =>
+      params.value.toUpperCase(),
   },
   {
     field: 'current_price',
@@ -135,7 +142,9 @@ export const columns: ColDef<ICoins>[] = [
     sortable: false,
     cellRenderer: (params: any) => {
       const color =
-        params.data.price_change_percentage_7d_in_currency < 0 ? tailwindConfig.theme.extend.colors.error : tailwindConfig.theme.extend.colors.success;
+        params.data.price_change_percentage_7d_in_currency < 0
+          ? tailwindConfig.theme.extend.colors.error
+          : tailwindConfig.theme.extend.colors.success;
       return (
         <ResponsiveContainer>
           <AreaChart data={params.value}>

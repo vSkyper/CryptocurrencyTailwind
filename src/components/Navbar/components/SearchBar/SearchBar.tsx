@@ -12,23 +12,29 @@ export default function SearchBar() {
     'https://api.coingecko.com/api/v3/coins/list?include_platform=false'
   );
 
-  const autocompleteMatch = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-    if (!e.currentTarget.value || error || !data) {
-      return [];
-    }
-
-    const reg: RegExp = new RegExp(`^${e.currentTarget.value}`, 'i');
-    return data.filter((term: ICoinsList) => {
-      if (term.name.match(reg)) {
-        return term;
+  const autocompleteMatch = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      if (!e.currentTarget.value || error || !data) {
+        return [];
       }
-      return false;
-    });
-  }, [error, data]);
 
-  const showResults = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-    setSearchResult(autocompleteMatch(e));
-  }, [autocompleteMatch]);
+      const reg: RegExp = new RegExp(`^${e.currentTarget.value}`, 'i');
+      return data.filter((term: ICoinsList) => {
+        if (term.name.match(reg)) {
+          return term;
+        }
+        return false;
+      });
+    },
+    [error, data]
+  );
+
+  const showResults = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      setSearchResult(autocompleteMatch(e));
+    },
+    [autocompleteMatch]
+  );
 
   return (
     <div className='w-full relative'>
@@ -74,5 +80,5 @@ export default function SearchBar() {
         </div>
       )}
     </div>
-  )
+  );
 }

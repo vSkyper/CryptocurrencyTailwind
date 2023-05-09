@@ -2,13 +2,13 @@ import { IGlobalData } from 'interfaces';
 
 interface Props {
   globalData: IGlobalData;
-};
+}
 
 export default function Description({ globalData }: Props) {
   const marketCapText: string = Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    notation: 'compact'
+    notation: 'compact',
   }).format(globalData.data.total_market_cap.usd);
 
   const marketCapPercentage: string = (
@@ -22,7 +22,7 @@ export default function Description({ globalData }: Props) {
   const totalVolumeText: string = Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    notation: 'compact'
+    notation: 'compact',
   }).format(globalData.data.total_volume.usd);
 
   const marketCapPercentageBTC: string = (
@@ -41,10 +41,8 @@ export default function Description({ globalData }: Props) {
     style: 'percent',
   });
 
-  const cryptocurrencies: string = (
-    globalData.data.active_cryptocurrencies).toLocaleString(
-      'en-US'
-    );
+  const cryptocurrencies: string =
+    globalData.data.active_cryptocurrencies.toLocaleString('en-US');
 
   return (
     <>
@@ -52,8 +50,7 @@ export default function Description({ globalData }: Props) {
         Cryptocurrency Prices by Market Cap
       </div>
       <div className='text-base sm:text-lg font-normal tracking-tight text-primaryDark dark:text-primary'>
-        The global cryptocurrency market cap today is {marketCapText},
-        a{' '}
+        The global cryptocurrency market cap today is {marketCapText}, a{' '}
         <span
           className={
             globalData.data.market_cap_change_percentage_24h_usd < 0
@@ -70,5 +67,5 @@ export default function Description({ globalData }: Props) {
         {cryptocurrencies} cryptocurrencies.
       </div>
     </>
-  )
+  );
 }

@@ -2,22 +2,26 @@ import { IGlobalData } from 'interfaces';
 
 interface Props {
   globalData: IGlobalData;
-};
+}
 
 export default function Cards({ globalData }: Props) {
-  const marketCap: string = (globalData.data.total_market_cap.usd
-  ).toLocaleString('en-US', {
-    maximumFractionDigits: 0,
-    style: 'currency',
-    currency: 'USD',
-  });
+  const marketCap: string = globalData.data.total_market_cap.usd.toLocaleString(
+    'en-US',
+    {
+      maximumFractionDigits: 0,
+      style: 'currency',
+      currency: 'USD',
+    }
+  );
 
-  const totalVolume: string = (globalData.data.total_volume.usd
-  ).toLocaleString('en-US', {
-    maximumFractionDigits: 0,
-    style: 'currency',
-    currency: 'USD',
-  });
+  const totalVolume: string = globalData.data.total_volume.usd.toLocaleString(
+    'en-US',
+    {
+      maximumFractionDigits: 0,
+      style: 'currency',
+      currency: 'USD',
+    }
+  );
 
   const marketCapPercentageBTC: string = (
     globalData.data.market_cap_percentage.btc / 100
@@ -27,10 +31,8 @@ export default function Cards({ globalData }: Props) {
     style: 'percent',
   });
 
-  const cryptocurrencies: string = (
-    globalData.data.active_cryptocurrencies).toLocaleString(
-      'en-US'
-    );
+  const cryptocurrencies: string =
+    globalData.data.active_cryptocurrencies.toLocaleString('en-US');
 
   return (
     <div className='mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
@@ -67,5 +69,5 @@ export default function Cards({ globalData }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

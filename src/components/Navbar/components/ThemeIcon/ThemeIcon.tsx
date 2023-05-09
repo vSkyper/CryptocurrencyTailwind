@@ -40,5 +40,5 @@ export default function ThemeIcon() {
         </svg>
       )}
     </div>
-  )
-} 
+  );
+}

@@ -7,5 +7,5 @@ export default function ErrorModal() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -3,7 +3,7 @@ import { Cards, Description } from './components';
 
 interface Props {
   globalData: IGlobalData;
-};
+}
 
 export default function Global({ globalData }: Props) {
   return (
@@ -12,4 +12,4 @@ export default function Global({ globalData }: Props) {
       <Cards globalData={globalData} />
     </div>
   );
-};
+}
