@@ -3,6 +3,10 @@ import { useThemeContext } from 'store';
 export default function ThemeIcon() {
   const { darkMode, setDarkMode } = useThemeContext();
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div className='ml-4 text-primaryDark dark:text-primary cursor-pointer'>
       {!darkMode && (
@@ -13,7 +17,7 @@ export default function ThemeIcon() {
           viewBox='0 0 24 24'
           stroke='currentColor'
           strokeWidth={2}
-          onClick={() => setDarkMode(true)}
+          onClick={toggleDarkMode}
         >
           <path
             strokeLinecap='round'
@@ -30,7 +34,7 @@ export default function ThemeIcon() {
           viewBox='0 0 24 24'
           stroke='currentColor'
           strokeWidth={2}
-          onClick={() => setDarkMode(false)}
+          onClick={toggleDarkMode}
         >
           <path
             strokeLinecap='round'

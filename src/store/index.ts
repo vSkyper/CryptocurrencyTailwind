@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 
 export type ThemeContent = {
   darkMode: boolean;
-  setDarkMode: (darkMode: boolean) => void;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ThemeContext: React.Context<ThemeContent> =

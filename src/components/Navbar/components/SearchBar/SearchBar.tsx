@@ -18,9 +18,9 @@ export default function SearchBar() {
         return [];
       }
 
-      const reg: RegExp = new RegExp(`^${e.currentTarget.value}`, 'i');
+      const reg = new RegExp(`^${e.currentTarget.value}`, 'i');
       return data.filter((term: ICoinsList) => {
-        if (term.name.match(reg)) {
+        if (reg.test(term.name) || reg.test(term.symbol)) {
           return term;
         }
         return false;
@@ -35,6 +35,18 @@ export default function SearchBar() {
     },
     [autocompleteMatch]
   );
+
+  const handleFocus = useCallback(() => {
+    setSearchFocus(true);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setSearchFocus(false);
+  }, []);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+  }, []);
 
   return (
     <div className='w-full relative'>
@@ -58,8 +70,8 @@ export default function SearchBar() {
         type='text'
         className='focus:outline-none p-1.5 pl-10 pr-3.5 w-full text-primaryDark dark:text-primary bg-primary rounded-lg ring sm:text-sm focus:ring-tertiary dark:bg-primaryDark placeholder-secondaryDark dark:placeholder-secondary'
         placeholder='Search...'
-        onFocus={() => setSearchFocus(true)}
-        onBlur={() => setSearchFocus(false)}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         onChange={showResults}
       />
       {searchResult.length !== 0 && searchFocus && (
@@ -69,7 +81,7 @@ export default function SearchBar() {
               <Link
                 key={term.id}
                 to={`/coins/${term.id}`}
-                onMouseDown={(e) => e.preventDefault()}
+                onMouseDown={handleMouseDown}
               >
                 <li className='px-4 py-2 hover:bg-secondary dark:hover:bg-secondaryDark '>
                   {term.name} ({term.symbol.toUpperCase()})

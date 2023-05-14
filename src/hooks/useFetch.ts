@@ -58,7 +58,7 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
       }
     };
 
-    void fetchData();
+    fetchData();
 
     return () => {
       cancelRequest.current = true;

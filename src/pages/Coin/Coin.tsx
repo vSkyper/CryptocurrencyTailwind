@@ -5,7 +5,7 @@ import { ICoin } from 'interfaces';
 import { ErrorModal, LoadingModal } from 'components';
 
 export default function Coin() {
-  let { id } = useParams();
+  const { id } = useParams();
 
   const { data, error } = useFetch<ICoin>(
     `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false`

@@ -23,6 +23,7 @@ export default function App() {
       case false:
         document.body.setAttribute('class', 'bg-primary');
         break;
+      // No Default
     }
   }, [darkMode]);
 

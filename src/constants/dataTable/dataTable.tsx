@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   CellClassParams,
   ColDef,
+  ICellRendererParams,
   ValueFormatterParams,
   ValueGetterParams,
 } from 'ag-grid-community';
@@ -19,18 +20,17 @@ export const columns: ColDef<ICoins>[] = [
   {
     headerName: '#',
     width: 65,
-    valueGetter: (params: ValueGetterParams<ICoins>) =>
-      params.node && params.node.id,
+    valueGetter: (params: ValueGetterParams<ICoins>) => params.node?.id,
   },
   {
     field: 'name',
     width: 170,
-    cellRenderer: (params: any) => (
+    cellRenderer: (params: ICellRendererParams<ICoins>) => (
       <Link
         className='flex items-center gap-2 hover:underline'
-        to={`/coins/${params.data.id}`}
+        to={`/coins/${params.data?.id}`}
       >
-        <img src={params.data.image} className='w-5' alt='logo' />
+        <img src={params.data?.image} className='w-5' alt='logo' />
         {params.value}
       </Link>
     ),
@@ -140,9 +140,9 @@ export const columns: ColDef<ICoins>[] = [
     headerName: 'Last 7 days',
     width: 175,
     sortable: false,
-    cellRenderer: (params: any) => {
+    cellRenderer: (params: ICellRendererParams<ICoins>) => {
       const color =
-        params.data.price_change_percentage_7d_in_currency < 0
+        (params.data?.price_change_percentage_7d_in_currency || 0) < 0
           ? tailwindConfig.theme.extend.colors.error
           : tailwindConfig.theme.extend.colors.success;
       return (
