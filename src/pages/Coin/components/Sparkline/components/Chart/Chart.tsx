@@ -53,7 +53,7 @@ export default function Chart({ sparkline, days }: Props) {
   const handleTickFormatterXAxis = useCallback(
     (value: string) => {
       switch (days) {
-        case '1D':
+        case '1':
           return format(new Date(value), '| hh:mm a |');
         case 'max':
           return format(new Date(value), '| y MMM |');
