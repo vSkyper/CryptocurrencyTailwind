@@ -76,7 +76,7 @@ export default function SearchBar() {
       />
       {searchResult.length !== 0 && searchFocus && (
         <div className='absolute inset-x-0 bg-primary mt-1 rounded shadow dark:bg-primaryDark'>
-          <ul className='overflow-y-scroll overflow-x-hidden custom-scroll max-h-52 py-1 text-sm text-secondaryDark dark:text-secondary'>
+          <ul className='overflow-y-scroll overflow-x-hidden custom-scroll max-h-52 text-sm text-secondaryDark dark:text-secondary'>
             {searchResult.map((term: ICoinsList) => (
               <Link
                 key={term.id}

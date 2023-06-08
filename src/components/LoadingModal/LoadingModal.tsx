@@ -1,6 +1,6 @@
 export default function LoadingModal() {
   return (
-    <div className='fixed h-full w-full top-0 left-0 z-30 bg-primary bg-opacity-70 dark:bg-primaryDark dark:bg-opacity-80 flex items-center justify-center'>
+    <div className='fixed inset-0 z-30 bg-primary bg-opacity-70 dark:bg-primaryDark dark:bg-opacity-80 flex items-center justify-center'>
       <svg
         aria-hidden='true'
         className='inline w-8 h-8 mr-2 text-secondary animate-spin dark:text-secondaryDark fill-blue-600'
