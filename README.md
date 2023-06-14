@@ -17,14 +17,13 @@
 
 -   ReactJS - version 18.2.0
 -   TypeScript - version 4.9.5
--   MUI - version 5.12.2
+-   TailwindCSS - version 3.3.2
 
 ## Features
 
 -   The ability to search for a specific cryptocurrency
 -   The ability to sort cryptocurrencies in table
 -   the ability to display the price of a cryptocurrency in a specific time interval
--   the ability to exchange cryptocurrencies
 
 ## Contact
 
