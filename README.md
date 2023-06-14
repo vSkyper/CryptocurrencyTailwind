@@ -1,6 +1,6 @@
 # Cryptocurrency
 
-> The goal of the project is to provide a cryptocurrency dashboard. The dashboard is designed to display the current price of cryptocurrencies.
+> The goal of the project is to provide a cryptocurrency dashboard.
 
 ## Table of Contents
 
