@@ -7,7 +7,7 @@ import {
   ValueFormatterParams,
   ValueGetterParams,
 } from 'ag-grid-community';
-import tailwindConfig from 'tailwind.config';
+import tailwindConfig from '../../../tailwind.config.ts';
 import { ICoins } from 'interfaces';
 
 export const defaultColDef: ColDef<ICoins> = {
@@ -19,11 +19,13 @@ export const defaultColDef: ColDef<ICoins> = {
 export const columns: ColDef<ICoins>[] = [
   {
     headerName: '#',
+    cellDataType: 'text',
     width: 65,
     valueGetter: (params: ValueGetterParams<ICoins>) => params.node?.id,
   },
   {
     field: 'name',
+    cellDataType: 'text',
     width: 170,
     cellRenderer: (params: ICellRendererParams<ICoins>) => (
       <Link
@@ -37,24 +39,33 @@ export const columns: ColDef<ICoins>[] = [
   },
   {
     field: 'symbol',
+    cellDataType: 'text',
     width: 115,
-    valueFormatter: (params: ValueFormatterParams<ICoins, string>) =>
-      params.value.toUpperCase(),
+    valueFormatter: (params: ValueFormatterParams<ICoins, string>) => {
+      if (!params.value) return 'N/A';
+
+      return params.value.toUpperCase();
+    },
   },
   {
     field: 'current_price',
+    cellDataType: 'number',
     headerName: 'Current price',
     width: 150,
-    valueFormatter: (params: ValueFormatterParams<ICoins, number>) =>
-      params.value.toLocaleString('en-US', {
+    valueFormatter: (params: ValueFormatterParams<ICoins, number>) => {
+      if (!params.value) return 'N/A';
+
+      return params.value.toLocaleString('en-US', {
         minimumFractionDigits: 0,
         maximumFractionDigits: 8,
         style: 'currency',
         currency: 'USD',
-      }),
+      });
+    },
   },
   {
     field: 'price_change_percentage_1h_in_currency',
+    cellDataType: 'number',
     headerName: '1h',
     width: 120,
     cellClass: (params: CellClassParams<ICoins, number | null>) => {
@@ -75,6 +86,7 @@ export const columns: ColDef<ICoins>[] = [
   },
   {
     field: 'price_change_percentage_24h_in_currency',
+    cellDataType: 'number',
     headerName: '24h',
     width: 120,
     cellClass: (params: CellClassParams<ICoins, number | null>) => {
@@ -95,6 +107,7 @@ export const columns: ColDef<ICoins>[] = [
   },
   {
     field: 'price_change_percentage_7d_in_currency',
+    cellDataType: 'number',
     headerName: '7d',
     width: 120,
     cellClass: (params: CellClassParams<ICoins, number | null>) => {
@@ -115,31 +128,45 @@ export const columns: ColDef<ICoins>[] = [
   },
   {
     field: 'total_volume',
+    cellDataType: 'number',
     headerName: '24h volume',
     width: 175,
-    valueFormatter: (params: ValueFormatterParams<ICoins, number>) =>
-      params.value.toLocaleString('en-US', {
+    valueFormatter: (params: ValueFormatterParams<ICoins, number>) => {
+      if (!params.value) return 'N/A';
+
+      return params.value.toLocaleString('en-US', {
         maximumFractionDigits: 0,
         style: 'currency',
         currency: 'USD',
-      }),
+      });
+    },
   },
   {
     field: 'market_cap',
+    cellDataType: 'number',
     headerName: 'Market cap',
     width: 175,
-    valueFormatter: (params: ValueFormatterParams<ICoins, number>) =>
-      params.value.toLocaleString('en-US', {
+    valueFormatter: (params: ValueFormatterParams<ICoins, number>) => {
+      if (!params.value) return 'N/A';
+
+      return params.value.toLocaleString('en-US', {
         maximumFractionDigits: 0,
         style: 'currency',
         currency: 'USD',
-      }),
+      });
+    },
   },
   {
     field: 'sparkline_in_7d.price',
+    cellDataType: 'object',
     headerName: 'Last 7 days',
     width: 175,
     sortable: false,
+    valueFormatter: (params: ValueFormatterParams<ICoins, string>) => {
+      if (!params.value) return 'N/A';
+
+      return params.value;
+    },
     cellRenderer: (params: ICellRendererParams<ICoins>) => {
       const color =
         (params.data?.price_change_percentage_7d_in_currency || 0) < 0

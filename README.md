@@ -4,10 +4,10 @@
 
 ## Table of Contents
 
--   [Demo](#demo)
--   [Technologies Used](#technologies-used)
--   [Features](#features)
--   [Contact](#contact)
+- [Demo](#demo)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Contact](#contact)
 
 ## Demo
 
@@ -15,15 +15,16 @@
 
 ## Technologies Used
 
--   ReactJS - version 18.2.0
--   TypeScript - version 4.9.5
--   TailwindCSS - version 3.3.2
+- ReactJS - version 18.2.0
+- Vite - version 4.4.5
+- TypeScript - version 5.0.2
+- TailwindCSS - version 3.3.3
 
 ## Features
 
--   The ability to search for a specific cryptocurrency
--   The ability to sort cryptocurrencies in table
--   the ability to display the price of a cryptocurrency in a specific time interval
+- The ability to search for a specific cryptocurrency
+- The ability to sort cryptocurrencies in table
+- the ability to display the price of a cryptocurrency in a specific time interval
 
 ## Contact
 

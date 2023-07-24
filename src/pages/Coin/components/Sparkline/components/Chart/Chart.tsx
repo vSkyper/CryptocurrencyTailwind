@@ -15,7 +15,7 @@ import {
   ValueType,
 } from 'recharts/types/component/DefaultTooltipContent';
 import { useThemeContext } from 'store';
-import tailwindConfig from 'tailwind.config';
+import tailwindConfig from '../../../../../../../tailwind.config.ts';
 
 interface Props {
   sparkline: {

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ThemeContext } from './store';
-import { Footer, Navbar } from './components';
-import { Coin, Home } from './pages';
+import { ThemeContext } from 'store';
+import { Footer, Navbar } from 'components';
+import { Coin, Home } from 'pages';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(
@@ -29,7 +29,7 @@ export default function App() {
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={import.meta.env.PUBLIC_URL}>
         <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
           <Navbar />
         </ThemeContext.Provider>
