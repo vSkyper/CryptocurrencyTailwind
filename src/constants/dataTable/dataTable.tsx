@@ -7,7 +7,7 @@ import {
   ValueFormatterParams,
   ValueGetterParams,
 } from 'ag-grid-community';
-import tailwindConfig from '../../../tailwind.config.ts';
+import tailwindConfig from '@root/tailwind.config';
 import { ICoins } from 'interfaces';
 
 export const defaultColDef: ColDef<ICoins> = {
