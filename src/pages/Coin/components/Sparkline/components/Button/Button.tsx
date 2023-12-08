@@ -1,20 +1,9 @@
 import { useCallback } from 'react';
+import { ButtonProps } from './interface';
 
-interface Props {
-  setDays: React.Dispatch<React.SetStateAction<string>>;
-  actualDays: string;
-  days: string;
-  daysFormatted: string;
-  mobileDisappear: boolean;
-}
+export default function Button(props: ButtonProps) {
+  const { days, daysFormatted, setDays, actualDays, mobileDisappear } = props;
 
-export default function Button({
-  setDays,
-  actualDays,
-  days,
-  daysFormatted,
-  mobileDisappear,
-}: Props) {
   const isActualDaysColor = useCallback(() => {
     if (actualDays === days) return 'text-tertiary ';
     return 'text-primaryDark dark:text-primary ';

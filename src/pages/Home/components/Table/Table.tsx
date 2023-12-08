@@ -1,16 +1,14 @@
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { useThemeContext } from 'store';
-import { ICoins } from 'interfaces';
 import { columns, defaultColDef } from 'constants/dataTable';
 import { useCallback } from 'react';
+import { useThemeContext } from 'providers';
+import { TableProps } from './interface';
 
-interface Props {
-  coins: ICoins[];
-}
+export default function Table(props: TableProps) {
+  const { coins } = props;
 
-export default function Table({ coins }: Props) {
   const { darkMode } = useThemeContext();
 
   const isDarkMode = useCallback(() => {

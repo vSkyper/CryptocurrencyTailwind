@@ -14,18 +14,13 @@ import {
   NameType,
   ValueType,
 } from 'recharts/types/component/DefaultTooltipContent';
-import { useThemeContext } from 'store';
 import tailwindConfig from '@root/tailwind.config';
+import { useThemeContext } from 'providers';
+import { ChartProps } from './interface';
 
-interface Props {
-  sparkline: {
-    date: string;
-    value: number;
-  }[];
-  days: string;
-}
+export default function Chart(props: ChartProps) {
+  const { sparkline, days } = props;
 
-export default function Chart({ sparkline, days }: Props) {
   const { darkMode } = useThemeContext();
 
   const CustomTooltip = useCallback(

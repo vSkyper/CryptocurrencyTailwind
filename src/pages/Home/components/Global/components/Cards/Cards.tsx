@@ -1,10 +1,8 @@
-import { IGlobalData } from 'interfaces';
+import { CardsProps } from './interface';
 
-interface Props {
-  globalData: IGlobalData;
-}
+export default function Cards(props: CardsProps) {
+  const { globalData } = props;
 
-export default function Cards({ globalData }: Props) {
   const marketCap: string = globalData.data.total_market_cap.usd.toLocaleString(
     'en-US',
     {

@@ -1,58 +1,30 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ThemeContext } from 'store';
-import { Footer, Navbar } from 'components';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Coin, Home } from 'pages';
+import { Layout } from 'components';
+import { useThemeContext } from 'providers';
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState<boolean>(
-    localStorage.getItem('localTheme')
-      ? JSON.parse(localStorage.getItem('localTheme') || '{}')
-      : true
-  );
+  const { darkMode } = useThemeContext();
 
-  useEffect(() => {
-    localStorage.setItem('localTheme', JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  useEffect(() => {
-    switch (darkMode) {
-      case true:
-        document.body.setAttribute('class', 'bg-primaryDark');
-        break;
-      case false:
-        document.body.setAttribute('class', 'bg-primary');
-        break;
-      // No Default
-    }
-  }, [darkMode]);
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/coins/:id',
+          element: <Coin />,
+        },
+      ],
+    },
+  ]);
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <Router basename={import.meta.env.PUBLIC_URL}>
-        <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-          <Navbar />
-        </ThemeContext.Provider>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-                <Home />
-              </ThemeContext.Provider>
-            }
-          />
-          <Route
-            path='/coins/:id'
-            element={
-              <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-                <Coin />
-              </ThemeContext.Provider>
-            }
-          />
-        </Routes>
-        <Footer />
-      </Router>
+      <RouterProvider router={router} />
     </div>
   );
 }

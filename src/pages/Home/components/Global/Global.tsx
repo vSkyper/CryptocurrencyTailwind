@@ -1,11 +1,9 @@
-import { IGlobalData } from 'interfaces';
 import { Cards, Description } from './components';
+import { GlobalProps } from './interface';
 
-interface Props {
-  globalData: IGlobalData;
-}
+export default function Global(props: GlobalProps) {
+  const { globalData } = props;
 
-export default function Global({ globalData }: Props) {
   return (
     <div>
       <Description globalData={globalData} />

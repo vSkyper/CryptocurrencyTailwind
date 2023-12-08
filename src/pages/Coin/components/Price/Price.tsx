@@ -1,11 +1,9 @@
-import { IMarketData } from 'interfaces';
 import { useCallback } from 'react';
+import { PriceProps } from './interface';
 
-interface Props {
-  marketData: IMarketData;
-}
+export default function Price(props: PriceProps) {
+  const { marketData } = props;
 
-export default function Price({ marketData }: Props) {
   const priceChangeColor = useCallback(() => {
     if ((marketData.price_change_percentage_24h || 0) < 0) return 'text-error';
     return 'text-success';
